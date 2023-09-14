@@ -54,6 +54,9 @@ const PaymentListComponent = () => {
 			PayPal: "fa-paypal",
 			"Bank Transfer": "fa-university",
 			Cash: "fa-money",
+			"Google Pay": "fa-google-wallet",
+			"Apple Pay": "fa-apple",
+			Bitcoin: "fa-bitcoin",
 			// Add more mappings as needed
 		};
 
