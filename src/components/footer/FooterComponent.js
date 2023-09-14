@@ -9,11 +9,12 @@ const FooterComponent = () => {
 					<div className="col-md-4 d-flex align-items-center">
 						<span
 							className="mb-3 mb-md-0 text-muted"
-							style={{ fontSize: "12px" }}
+							style={{ fontSize: "11px" }}
 						>
 							&copy; Copyright &nbsp;
-							{new Date().getFullYear()}. Tri-Payment, Inc. Developed by Mahmoud
-							Osman.
+							{new Date().getFullYear()}.{" "}
+							<span className="text-uppercase">Tri-Payment, Inc.</span>&nbsp;
+							Developed by Mahmoud Osman.
 						</span>
 					</div>
 					<ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
