@@ -65,8 +65,8 @@ const PaymentListComponent = () => {
 	};
 
 	return (
-		<section className="payment text-muted">
-			<div className="container">
+		<section className="payment">
+			<div className="container shadow-lg p-3 mb-5 bg-body rounded">
 				<h3 className="mt-3">Weekly Payment Options</h3> <hr />
 				{/* Start of row 1 */}
 				<div className="row">
@@ -100,6 +100,7 @@ const PaymentListComponent = () => {
 							<table className="table table-striped table-hover">
 								<thead>
 									<tr>
+										<th>Invoice #</th>
 										<th>Amount</th>
 										<th>Payment Method</th>
 										<th>Due Date</th>
@@ -120,6 +121,7 @@ const PaymentListComponent = () => {
 											// 		: "table-danger"
 											// }
 										>
+											<td>{payment.invoice}</td>
 											<td>
 												$
 												{payment.amount.toLocaleString("en-US", {
@@ -135,19 +137,24 @@ const PaymentListComponent = () => {
 											<td>{formatDate(payment.dueDate)}</td>
 											<td
 												className={
-													payment.paidDate <= payment.dueDate
-														? "text-primary"
+													payment.paidDate > payment.dueDate
+														? "text-success"
 														: "text-dark"
 												}
 											>
 												{formatDate(ensureDateInPast(payment.paidDate))}
-												{payment.dueDate >= payment.paidDate ? (
+												{payment.paidDate > payment.dueDate ? (
 													<p className="text-muted" style={{ fontSize: "9px" }}>
 														{" "}
 														Thanks for payment
 													</p>
 												) : (
-													""
+													<p
+														className="text-danger"
+														style={{ fontSize: "9px" }}
+													>
+														Payment is due!
+													</p>
 												)}
 											</td>
 											<td>{payment.payee}</td>
