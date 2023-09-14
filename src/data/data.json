@@ -1,0 +1,84 @@
+{
+  "payments": [
+    {
+      "amount": 100.00,
+      "type": "Credit Card",
+      "paidDate": "2023-09-13",
+      "payee": "John Doe",
+      "pending": false,
+      "completed": true
+    },
+    {
+      "amount": 50.00,
+      "type": "PayPal",
+      "paidDate": "2023-09-14",
+      "payee": "Alice Smith",
+      "pending": false,
+      "completed": true
+    },
+    {
+      "amount": 75.00,
+      "type": "Bank Transfer",
+      "paidDate": "2023-09-15",
+      "payee": "Bob Johnson",
+      "pending": true,
+      "completed": false
+    },
+    {
+      "amount": 200.00,
+      "type": "Cash",
+      "paidDate": "2023-09-16",
+      "payee": "Emily Wilson",
+      "pending": false,
+      "completed": true
+    },
+    {
+      "amount": 30.00,
+      "type": "Venmo",
+      "paidDate": "2023-09-17",
+      "payee": "David Brown",
+      "pending": true,
+      "completed": false
+    },
+    {
+      "amount": 150.00,
+      "type": "Cheque",
+      "paidDate": "2023-09-18",
+      "payee": "Sarah Davis",
+      "pending": false,
+      "completed": true
+    },
+    {
+      "amount": 80.00,
+      "type": "Google Pay",
+      "paidDate": "2023-09-19",
+      "payee": "Michael Lee",
+      "pending": true,
+      "completed": false
+    },
+    {
+      "amount": 60.00,
+      "type": "Apple Pay",
+      "paidDate": "2023-09-20",
+      "payee": "Linda White",
+      "pending": false,
+      "completed": true
+    },
+    {
+      "amount": 120.00,
+      "type": "Bitcoin",
+      "paidDate": "2023-09-21",
+      "payee": "Daniel Miller",
+      "pending": true,
+      "completed": false
+    },
+    {
+      "amount": 45.00,
+      "type": "Zelle",
+      "paidDate": "2023-09-22",
+      "payee": "Susan Clark",
+      "pending": false,
+      "completed": true
+    }
+  ]
+}
