@@ -1,9 +1,7 @@
-import React from "react";
 import data from "../data/data.json";
+import { Link } from "react-router-dom";
 
 const PaymentListComponent = () => {
-	console.log(data);
-
 	return (
 		<section className="payment">
 			<div className="container">
@@ -18,6 +16,7 @@ const PaymentListComponent = () => {
 									<th>Payee</th>
 									<th>Pending</th>
 									<th>Completed</th>
+									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,6 +43,20 @@ const PaymentListComponent = () => {
 												</span>
 											)}
 										</td>
+										<td>
+											<Link to="" className="btn btn-outline-success btn-sm">
+												Edit
+											</Link>
+										</td>
+
+										{/* 	<td>
+											<Link to="#" className="btn btn-primary">
+												Edit
+											</Link>
+											<Link to="#" className="btn btn-danger">
+												Delete
+											</Link>
+										</td> */}
 									</tr>
 								))}
 							</tbody>
