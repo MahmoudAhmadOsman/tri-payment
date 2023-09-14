@@ -98,7 +98,7 @@ const PaymentListComponent = () => {
 								<thead>
 									<tr>
 										<th>Amount</th>
-										<th>Type</th>
+										<th>Payment Method</th>
 										<th>Due Date</th>
 										<th>Paid Date</th>
 										<th>Payee</th>
