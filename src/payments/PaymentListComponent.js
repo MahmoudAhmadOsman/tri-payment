@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import data from "../data/data.json";
 import { Link } from "react-router-dom";
 
@@ -26,6 +26,21 @@ const PaymentListComponent = () => {
 	const handleChange = (event) => {
 		setSelectedWeek(event.target.value);
 	};
+
+	const getPaymentTypeIcon = (paymentType) => {
+		// Map payment types to Font Awesome 4.7 icons
+		const iconMappings = {
+			"Credit Card": "fa-credit-card",
+			PayPal: "fa-paypal",
+			"Bank Transfer": "fa-university",
+			Cash: "fa-money",
+			// Add more mappings as needed
+		};
+
+		// Check if the payment type exists in the mappings, default to "fa-question" if not found
+		return iconMappings[paymentType] || "fa-money";
+	};
+
 	return (
 		<section className="payment text-muted">
 			<div className="container">
@@ -80,7 +95,12 @@ const PaymentListComponent = () => {
 													minimumFractionDigits: 2,
 												})}
 											</td>
-											<td>{payment.type}</td>
+											<td>
+												<i
+													className={`fa ${getPaymentTypeIcon(payment.type)}`}
+												></i>{" "}
+												{payment.type}
+											</td>
 											<td>{payment.paidDate}</td>
 											<td>{payment.payee}</td>
 											<td>{payment.pending ? "Yes" : "No"}</td>
