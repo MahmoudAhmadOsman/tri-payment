@@ -133,7 +133,7 @@ const PaymentListComponent = () => {
 											<td
 												className={
 													payment.paidDate <= payment.dueDate
-														? "text-primary fw-bold"
+														? "text-primary"
 														: "text-dark"
 												}
 											>
