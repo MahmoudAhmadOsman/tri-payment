@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PaymentListComponent from "./payments/PaymentListComponent";
 import Loading from "./utils/Loading";
 import NotFound from "./utils/NotFound";
+import NavigationComponent from "./navigation/NavigationComponent";
 
 function App() {
 	const [loading, setLoading] = useState(true);
@@ -17,6 +18,7 @@ function App() {
 				</>
 			) : (
 				<>
+					<NavigationComponent />
 					<Routes>
 						<Route path="/" exact element={<PaymentListComponent />} />
 						<Route path="*" element={<NotFound />} />

@@ -20,8 +20,8 @@ const PaymentListComponent = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{data.payments.map((payment, index) => (
-									<tr key={index}>
+								{data.payments.map((payment, id) => (
+									<tr key={payment.id}>
 										<td>
 											$
 											{payment.amount.toLocaleString("en-US", {
@@ -43,20 +43,21 @@ const PaymentListComponent = () => {
 												</span>
 											)}
 										</td>
+
 										<td>
-											<Link to="" className="btn btn-outline-success btn-sm">
-												Edit
+											<Link
+												to="#"
+												className="btn btn-outline-success btn-sm text-uppercase me-2"
+											>
+												<i className="fa fa-pencil"></i>
+											</Link>
+											<Link
+												to={`${payment.id}`}
+												className="btn btn-outline-danger btn-sm text-uppercase"
+											>
+												<i className="fa fa-trash-o"></i>
 											</Link>
 										</td>
-
-										{/* 	<td>
-											<Link to="#" className="btn btn-primary">
-												Edit
-											</Link>
-											<Link to="#" className="btn btn-danger">
-												Delete
-											</Link>
-										</td> */}
 									</tr>
 								))}
 							</tbody>
