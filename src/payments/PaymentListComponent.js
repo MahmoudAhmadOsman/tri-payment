@@ -48,12 +48,14 @@ const PaymentListComponent = () => {
 											<Link
 												to="#"
 												className="btn btn-outline-success btn-sm text-uppercase me-2"
+												title={`Update ${payment.payee} record!`}
 											>
 												<i className="fa fa-pencil"></i>
 											</Link>
 											<Link
 												to={`${payment.id}`}
 												className="btn btn-outline-danger btn-sm text-uppercase"
+												title={`Delete ${payment.payee} record!`}
 											>
 												<i className="fa fa-trash-o"></i>
 											</Link>
