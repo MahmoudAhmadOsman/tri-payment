@@ -47,7 +47,7 @@ const PaymentListComponent = () => {
 				<h3 className="mt-3">Weekly Payment Options</h3> <hr />
 				{/* Start of row 1 */}
 				<div className="row">
-					<div className="col-sm-2 mb-3">
+					<div className="col-sm-4 mb-3">
 						<div className="form-group">
 							<label htmlFor="weekSelect">Select a Week</label>
 							<select
