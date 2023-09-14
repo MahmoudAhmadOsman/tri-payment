@@ -7,6 +7,12 @@ const PaymentListComponent = () => {
 	const [selectedWeek, setSelectedWeek] = useState("");
 	const currentYear = new Date().getFullYear();
 
+	//Format paidDate Date
+	const formatDate = (dateString) => {
+		const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+		return new Date(dateString).toLocaleDateString(undefined, options);
+	};
+
 	// Initialize an array to store week options
 	const weekOptions = [];
 
@@ -101,7 +107,7 @@ const PaymentListComponent = () => {
 												></i>{" "}
 												{payment.type}
 											</td>
-											<td>{payment.paidDate}</td>
+											<td>{formatDate(payment.paidDate)}</td>
 											<td>{payment.payee}</td>
 											<td>{payment.pending ? "Yes" : "No"}</td>
 											<td>
