@@ -28,6 +28,20 @@ const PaymentListComponent = () => {
 		});
 	}
 
+	//Past date - paidDate
+	const ensureDateInPast = (dateString) => {
+		const currentDate = new Date();
+		const paidDate = new Date(dateString);
+
+		// Check if the paidDate is in the future
+		if (paidDate > currentDate) {
+			// Set paidDate to the current date if it's in the future
+			return currentDate.toISOString().split("T")[0];
+		}
+
+		return dateString;
+	};
+
 	// Event handler for select change
 	const handleChange = (event) => {
 		setSelectedWeek(event.target.value);
@@ -85,6 +99,7 @@ const PaymentListComponent = () => {
 									<tr>
 										<th>Amount</th>
 										<th>Type</th>
+										<th>Due Date</th>
 										<th>Paid Date</th>
 										<th>Payee</th>
 										<th>Pending</th>
@@ -94,7 +109,14 @@ const PaymentListComponent = () => {
 								</thead>
 								<tbody>
 									{data.payments.map((payment, id) => (
-										<tr key={payment.id}>
+										<tr
+											key={payment.id}
+											// className={
+											// 	payment.paidDate < payment.dueDate
+											// 		? "table-success"
+											// 		: "table-danger"
+											// }
+										>
 											<td>
 												$
 												{payment.amount.toLocaleString("en-US", {
@@ -107,7 +129,24 @@ const PaymentListComponent = () => {
 												></i>{" "}
 												{payment.type}
 											</td>
-											<td>{formatDate(payment.paidDate)}</td>
+											<td>{formatDate(payment.dueDate)}</td>
+											<td
+												className={
+													payment.paidDate <= payment.dueDate
+														? "text-primary fw-bold"
+														: "text-dark"
+												}
+											>
+												{formatDate(ensureDateInPast(payment.paidDate))}
+												{payment.dueDate >= payment.paidDate ? (
+													<p className="text-muted" style={{ fontSize: "9px" }}>
+														{" "}
+														Thanks for payment
+													</p>
+												) : (
+													""
+												)}
+											</td>
 											<td>{payment.payee}</td>
 											<td>{payment.pending ? "Yes" : "No"}</td>
 											<td>
