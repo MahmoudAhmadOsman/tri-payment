@@ -1,32 +1,30 @@
-import { useState } from "react";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PaymentListComponent from "./payments/PaymentListComponent";
-import Loading from "./utils/Loading";
 import NotFound from "./utils/NotFound";
 import NavigationComponent from "./navigation/NavigationComponent";
 import FooterComponent from "./components/footer/FooterComponent";
 
 function App() {
-	const [loading, setLoading] = useState(true);
+	const routes = [
+		{ path: "/", exact: true, element: <PaymentListComponent /> },
+		{ path: "*", element: <NotFound /> },
+	];
+	const routeComponents = routes.map((route, index) => (
+		<Route
+			key={index}
+			path={route.path}
+			element={route.element}
+			exact={route.exact}
+		/>
+	));
 
 	return (
 		<BrowserRouter>
-			{loading ? (
-				<>
-					<Loading />
-					{setLoading(false)}
-				</>
-			) : (
-				<>
-					<NavigationComponent />
-					<Routes>
-						<Route path="/" exact element={<PaymentListComponent />} />
-						<Route path="*" element={<NotFound />} />
-					</Routes>
-					<FooterComponent />
-				</>
-			)}
+			<>
+				<NavigationComponent />
+				<Routes>{routeComponents}</Routes>
+				<FooterComponent />
+			</>
 		</BrowserRouter>
 	);
 }
