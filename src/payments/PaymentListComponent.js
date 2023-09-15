@@ -160,7 +160,8 @@ const PaymentListComponent = () => {
 														// }
 														>
 															{formatDate(ensureDateInPast(payment.paidDate))}
-															{payment.paidDate < payment.dueDate &&
+															{payment.paidDate &&
+															payment.dueDate &&
 															!payment.pending &&
 															payment.completed ? (
 																<p
