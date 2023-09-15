@@ -42,6 +42,10 @@ const PaymentListComponent = () => {
 		return dateString;
 	};
 
+	function Capitalize(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+
 	// Event handler for select change
 	const handleChange = (event) => {
 		setSelectedWeek(event.target.value);
@@ -132,29 +136,35 @@ const PaymentListComponent = () => {
 												<i
 													className={`fa ${getPaymentTypeIcon(payment.type)}`}
 												></i>{" "}
-												{payment.type}
+												{Capitalize(payment.type)}
 											</td>
 											<td>{formatDate(payment.dueDate)}</td>
 											<td
-												className={
-													payment.paidDate > payment.dueDate
-														? "text-success"
-														: "text-dark"
-												}
+												// className={
+												// 	payment.paidDate >= payment.dueDate
+												// 		? "text-success"
+												// 		: "text-darks"
+												// }
 											>
 												{formatDate(ensureDateInPast(payment.paidDate))}
-												{payment.paidDate > payment.dueDate ? (
-													<p className="text-muted" style={{ fontSize: "9px" }}>
+												{payment.paidDate < payment.dueDate &&
+												!payment.pending &&
+												payment.completed ? (
+													<p
+														className="text-success"
+														style={{ fontSize: "9px" }}
+													>
 														{" "}
 														Thanks for payment
 													</p>
 												) : (
-													<p
-														className="text-danger"
-														style={{ fontSize: "9px" }}
-													>
-														Payment is due!
-													</p>
+													""
+													// <p
+													// 	className="text-danger"
+													// 	style={{ fontSize: "9px" }}
+													// >
+													// 	Processing payment!
+													// </p>
 												)}
 											</td>
 											<td>{payment.payee}</td>

@@ -217,7 +217,7 @@
       "paidDate": "2023-08-24",
       "dueDate": "2023-10-30",
       "payee": "Magdaia Reddie",
-      "pending": 1,
+      "pending": 0,
       "completed": 1
     }
   ]
