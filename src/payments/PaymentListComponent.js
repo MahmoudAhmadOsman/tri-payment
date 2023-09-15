@@ -64,6 +64,10 @@ const PaymentListComponent = () => {
 			"Google Pay": "fa-google-wallet",
 			"Apple Pay": "fa-apple",
 			Bitcoin: "fa-bitcoin",
+			visa: "fa-cc-visa",
+			mastercard: "fa-cc-mastercard",
+			americanexpress: "fa-cc-amex",
+
 			// Add more mappings as needed
 		};
 
