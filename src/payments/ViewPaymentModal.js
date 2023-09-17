@@ -49,8 +49,46 @@ const ViewPaymentModal = ({
 														selectedPayment.type
 													)}`}
 												></i>
-												<td>{selectedPayment.pending ? "YES" : "NO"}</td>
-												<td>{selectedPayment.completed ? "YES " : "NO"}</td>
+												<td>
+													{selectedPayment.pending ? (
+														<span>
+															<i
+																className="fa fa-check text-success fa-2x"
+																title="Payment  is not pending!"
+															></i>
+														</span>
+													) : (
+														<span>
+															<sup>
+																<i
+																	className="fa fa-times text-danger fa-2x"
+																	title="Payment is pending!"
+																></i>
+															</sup>
+														</span>
+													)}
+												</td>
+												{/* <td>{selectedPayment.pending ? "YES" : "NO"}</td> */}
+												{/* <td>{selectedPayment.completed ? "YES " : "NO"}</td> */}
+												<td>
+													{selectedPayment.completed ? (
+														<span>
+															<i
+																className="fa fa-check text-success fa-2x"
+																title="Payment is completed!"
+															></i>
+														</span>
+													) : (
+														<span>
+															<sup>
+																<i
+																	className="fa fa-times text-danger fa-2x"
+																	title="Payment is not completed!"
+																></i>
+															</sup>
+														</span>
+													)}
+												</td>
 											</tr>
 										</tbody>
 									</table>
