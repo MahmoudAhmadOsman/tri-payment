@@ -55,7 +55,7 @@ const ViewPaymentModal = ({
 														<span>
 															<i
 																className="fa fa-check text-success fa-2x"
-																title="Payment  is not pending!"
+																// title="Payment  is not pending!"
 															></i>
 														</span>
 													) : (
@@ -63,7 +63,7 @@ const ViewPaymentModal = ({
 															<sup>
 																<i
 																	className="fa fa-times text-danger fa-2x"
-																	title="Payment is pending!"
+																	// title="Payment is pending!"
 																></i>
 															</sup>
 														</span>
@@ -76,7 +76,7 @@ const ViewPaymentModal = ({
 														<span>
 															<i
 																className="fa fa-check text-success fa-2x"
-																title="Payment is completed!"
+																//  title="Payment is completed!"
 															></i>
 														</span>
 													) : (
@@ -84,7 +84,7 @@ const ViewPaymentModal = ({
 															<sup>
 																<i
 																	className="fa fa-times text-danger fa-2x"
-																	title="Payment is not completed!"
+																	// title="Payment is not completed!"
 																></i>
 															</sup>
 														</span>
