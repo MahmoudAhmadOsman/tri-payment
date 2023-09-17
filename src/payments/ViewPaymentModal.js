@@ -45,10 +45,11 @@ const ViewPaymentModal = ({
 													})}
 												</td>
 												<i
-													className={`fa ${getPaymentTypeIcon(
+													className={`fa fa-3x ${getPaymentTypeIcon(
 														selectedPayment.type
 													)}`}
 												></i>
+
 												<td>
 													{selectedPayment.pending ? (
 														<span>
