@@ -238,7 +238,7 @@ const PaymentListComponent = () => {
 														</Link> */}
 
 														<button
-															className="btn btn-outline-success btn-sm"
+															className="btn btn-outline-warning btn-sm"
 															data-bs-toggle="modal"
 															data-bs-target="#exampleModal"
 															title={`View ${payment.payee} record!`}
