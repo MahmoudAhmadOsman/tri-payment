@@ -4,6 +4,7 @@ const ViewPaymentModal = ({
 	selectedPayment,
 	getPaymentTypeIcon,
 	Capitalize,
+	formatDate,
 }) => {
 	return (
 		<div
@@ -93,7 +94,14 @@ const ViewPaymentModal = ({
 											</tr>
 										</tbody>
 									</table>
-								</div>
+								</div>{" "}
+								<hr />
+								<p>
+									Due Date:{" "}
+									<b className="text-danger">
+										{formatDate(selectedPayment.dueDate)}
+									</b>{" "}
+								</p>
 							</>
 						) : (
 							<h6 className="text-danger text-center">No payment selected!</h6>

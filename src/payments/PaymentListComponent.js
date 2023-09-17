@@ -276,6 +276,7 @@ const PaymentListComponent = () => {
 			<ViewPaymentModal
 				selectedPayment={selectedPayment}
 				getPaymentTypeIcon={getPaymentTypeIcon}
+				formatDate={formatDate}
 				Capitalize={Capitalize}
 			/>
 		</section>
