@@ -97,10 +97,10 @@ const ViewPaymentModal = ({
 								</div>{" "}
 								<hr />
 								<p>
-									Due Date:{" "}
-									<b className="text-danger">
+									<b>Due Date:</b>{" "}
+									<i className="text-danger">
 										{formatDate(selectedPayment.dueDate)}
-									</b>{" "}
+									</i>{" "}
 								</p>
 							</>
 						) : (
