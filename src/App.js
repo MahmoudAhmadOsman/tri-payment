@@ -3,10 +3,12 @@ import PaymentListComponent from "./payments/PaymentListComponent";
 import NotFound from "./utils/NotFound";
 import NavigationComponent from "./navigation/NavigationComponent";
 import FooterComponent from "./components/footer/FooterComponent";
+import EditPayment from "./payments/EditPayment";
 
 function App() {
 	const routes = [
 		{ path: "/", exact: true, element: <PaymentListComponent /> },
+		{ path: "/payments/view-payment/:id", element: <EditPayment /> },
 		{ path: "*", element: <NotFound /> },
 	];
 	const routeComponents = routes.map((route, index) => (

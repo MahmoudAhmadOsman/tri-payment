@@ -1,13 +1,20 @@
-import React, { useState } from "react";
-import data from "../data/data.json";
+import React, { useEffect, useState } from "react";
+// import data from "../data/data.json";
 import { Link } from "react-router-dom";
 import Loading from "../utils/Loading";
+import PaymentService from "../service/PaymentService";
+import ViewPaymentModal from "./ViewPaymentModal";
 
 const PaymentListComponent = () => {
+	const [payments, setPayments] = useState([]);
+	const [error, setError] = useState(false);
+
 	const [loading, setLoading] = useState(true);
+	const [selectedPayment, setSelectedPayment] = useState(null);
 
 	// Initialize state for selectedWeek
 	const [selectedWeek, setSelectedWeek] = useState("");
+
 	const currentYear = new Date().getFullYear();
 
 	//Format paidDate Date
@@ -55,7 +62,6 @@ const PaymentListComponent = () => {
 	};
 
 	const getPaymentTypeIcon = (paymentType) => {
-		// Map payment types to Font Awesome 4.7 icons
 		const iconMappings = {
 			"Credit Card": "fa-credit-card",
 			PayPal: "fa-paypal",
@@ -67,164 +73,211 @@ const PaymentListComponent = () => {
 			visa: "fa-cc-visa",
 			mastercard: "fa-cc-mastercard",
 			americanexpress: "fa-cc-amex",
-
-			// Add more mappings as needed
 		};
 
-		// Check if the payment type exists in the mappings, default to "fa-question" if not found
 		return iconMappings[paymentType] || "fa-money";
 	};
 
+	// Function to update selectedPayment when a "View" button is clicked
+	const handleViewClick = (payment) => {
+		setSelectedPayment(payment);
+	};
+
+	const getPayments = async () => {
+		await PaymentService.getAllPayments()
+			.then((res) => {
+				setPayments(res.data);
+				setLoading(false);
+			})
+			.catch((error) => {
+				setError(true);
+				console.error(error.message);
+			});
+	};
+
+	useEffect(() => {
+		getPayments();
+	}, []);
+
 	return (
 		<section className="payment">
-			<>
-				{loading ? (
-					<div>
-						<Loading />
-						{setLoading(false)}
-					</div>
-				) : (
-					<>
-						<div className="container shadow-lg p-3 mb-5 bg-body rounded">
-							<h3 className="mt-3">Weekly Payment Options</h3> <hr />
-							{/* Start of row 1 */}
-							<div className="row">
-								<div className="col-sm-4 mb-3">
-									<div className="form-group">
-										<label htmlFor="weekSelect">Select a Week</label>
-										<select
-											className="form-select"
-											id="weekSelect"
-											onChange={handleChange}
-											value={selectedWeek}
-										>
-											<option value="">Select a week</option>
-											{weekOptions.map((weekOption) => (
-												<option
-													key={weekOption.weekNumber}
-													value={weekOption.weekNumber}
-												>
-													Week {weekOption.weekNumber} ({weekOption.startDate} -{" "}
-													{weekOption.endDate})
-												</option>
-											))}
-										</select>
-									</div>
-								</div>
-							</div>
-							{/* End of row 1 */}
-							<div className="row">
-								<div className="col-sm-12">
-									<div className="table-responsive">
-										<table className="table table-striped table-hover">
-											<thead>
-												<tr>
-													<th>Invoice #</th>
-													<th>Amount</th>
-													<th>Payment Method</th>
-													<th>Due Date</th>
-													<th>Paid Date</th>
-													<th>Payee</th>
-													<th>Pending</th>
-													<th>Completed</th>
-													<th>Actions</th>
-												</tr>
-											</thead>
-											<tbody>
-												{data.payments.map((payment, id) => (
-													<tr
-														key={payment.id}
-														// className={
-														// 	payment.paidDate < payment.dueDate
-														// 		? "table-success"
-														// 		: "table-danger"
-														// }
-													>
-														<td>{payment.invoice}</td>
-														<td>
-															$
-															{payment.amount.toLocaleString("en-US", {
-																minimumFractionDigits: 2,
-															})}
-														</td>
-														<td>
-															<i
-																className={`fa ${getPaymentTypeIcon(
-																	payment.type
-																)}`}
-															></i>{" "}
-															{Capitalize(payment.type)}
-														</td>
-														<td>{formatDate(payment.dueDate)}</td>
-														<td
-														// className={
-														// 	payment.paidDate >= payment.dueDate
-														// 		? "text-success"
-														// 		: "text-darks"
-														// }
-														>
-															{formatDate(ensureDateInPast(payment.paidDate))}
-															{payment.paidDate &&
-															payment.dueDate &&
-															!payment.pending &&
-															payment.completed ? (
-																<p
-																	className="text-success"
-																	style={{ fontSize: "9px" }}
-																>
-																	{" "}
-																	Thanks for payment
-																</p>
-															) : (
-																""
-																// <p
-																// 	className="text-danger"
-																// 	style={{ fontSize: "9px" }}
-																// >
-																// 	Processing payment!
-																// </p>
-															)}
-														</td>
-														<td>{payment.payee}</td>
-														<td>{payment.pending ? "Yes" : "No"}</td>
-														<td>
-															{payment.completed ? (
-																<span>
-																	<i className="fa fa-check-square-o text-success"></i>
-																</span>
-															) : (
-																<span>
-																	<i className="fa fa-times text-danger"></i>
-																</span>
-															)}
-														</td>
-
-														<td>
-															<Link
-																to={`/payment/${payment.id}`}
-																className="btn btn-outline-success btn-sm text-uppercase me-2"
-																title={`Update ${payment.payee} record!`}
-															>
-																<i className="fa fa-pencil"></i>
-															</Link>
-															<button
-																className="btn btn-outline-danger btn-sm text-uppercase"
-																title={`Delete ${payment.payee} record!`}
-															>
-																<i className="fa fa-trash-o"></i>
-															</button>
-														</td>
-													</tr>
-												))}
-											</tbody>
-										</table>
-									</div>
+			{loading ? (
+				<Loading />
+			) : error ? (
+				setError(true)
+			) : (
+				<React.Fragment>
+					<div className="container shadow-lg p-3 mb-5 bg-body rounded">
+						<h3 className="mt-3">Weekly Payment Options</h3> <hr />
+						{/* Start of row 1 */}
+						<div className="row">
+							<div className="col-sm-4 mb-3">
+								<div className="form-group">
+									<label htmlFor="weekSelect">Select a Week</label>
+									<select
+										className="form-select"
+										id="weekSelect"
+										onChange={handleChange}
+										value={selectedWeek}
+									>
+										<option value="">Select a week</option>
+										{weekOptions.map((weekOption) => (
+											<option
+												key={weekOption.weekNumber}
+												value={weekOption.weekNumber}
+											>
+												Week {weekOption.weekNumber} ({weekOption.startDate} -{" "}
+												{weekOption.endDate})
+											</option>
+										))}
+									</select>
 								</div>
 							</div>
 						</div>
-					</>
-				)}
-			</>
+						{/* End of row 1 */}
+						<div className="row">
+							<div className="col-sm-12">
+								<div className="table-responsive">
+									<table className="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>Invoice #</th>
+												<th>Amount</th>
+												{/* <th>Method Type</th> */}
+												<th>Payer</th>
+												<th>Payee</th>
+												<th>Due Date</th>
+												<th>Paid Date</th>
+
+												{/* <th>Pending</th>
+												<th>Completed</th> */}
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											{payments.map((payment, id) => (
+												<tr
+													key={payment.id}
+													// className={
+													// 	payment.paidDate < payment.dueDate
+													// 		? "table-success"
+													// 		: "table-danger"
+													// }
+												>
+													<td>{payment.invoice}</td>
+													<td>
+														$
+														{payment.amount.toLocaleString("en-US", {
+															minimumFractionDigits: 2,
+														})}
+													</td>
+													{/* <td>
+														<i
+															className={`fa ${getPaymentTypeIcon(
+																payment.type
+															)}`}
+														></i>
+														{Capitalize(payment.type)}
+													</td> */}
+													<td>{payment.payer}</td>
+													<td>{payment.payee}</td>
+													<td>{formatDate(payment.dueDate)}</td>
+													<td
+													// className={
+													// 	payment.paidDate >= payment.dueDate
+													// 		? "text-success"
+													// 		: "text-darks"
+													// }
+													>
+														{formatDate(ensureDateInPast(payment.paidDate))}
+														{payment.paidDate &&
+														payment.dueDate &&
+														!payment.pending &&
+														payment.completed ? (
+															<p
+																className="text-success"
+																style={{ fontSize: "9px" }}
+															>
+																{" "}
+																Thanks for payment
+															</p>
+														) : (
+															""
+														)}
+													</td>
+
+													{/* <td>{payment.pending ? "Yes" : "No"}</td> */}
+													{/* <td>
+														{payment.completed ? (
+															<span>
+																<i className="fa fa-check-square-o text-success"></i>
+															</span>
+														) : (
+															<span>
+																<i className="fa fa-times text-danger"></i>
+															</span>
+														)}
+													</td> */}
+
+													<td className="d-flex justify-content-between">
+														{/* <Link
+															to={`/payments/view-payment/${payment.id}`}
+															className="btn btn-outline-success btn-sm "
+															title={`View ${payment.payee} record!`}
+														>
+															<i className="fa fa-eye"></i>
+														</Link> */}
+														{/* <Link
+															to={`${payment.invoice}`}
+															className="btn btn-outline-success btn-sm"
+															data-bs-toggle="modal"
+															data-bs-target="#exampleModal"
+														>
+															 
+															View
+														</Link> */}
+
+														<button
+															className="btn btn-outline-success btn-sm"
+															data-bs-toggle="modal"
+															data-bs-target="#exampleModal"
+															title={`View ${payment.payee} record!`}
+															onClick={() => handleViewClick(payment)}
+														>
+															<i className="fa fa-eye"></i>
+														</button>
+
+														<Link
+															to={`/payments/view-payment/${payment.id}`}
+															className="btn btn-outline-success btn-sm"
+															title={`Update ${payment.payee} record!`}
+														>
+															<i className="fa fa-pencil"></i>
+														</Link>
+
+														<button
+															className="btn btn-outline-danger btn-sm"
+															title={`Delete ${payment.payee} record!`}
+														>
+															<i className="fa fa-trash-o"></i>
+														</button>
+													</td>
+												</tr>
+											))}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</React.Fragment>
+			)}
+			{/* Modal for view payment component */}
+			<ViewPaymentModal
+				selectedPayment={selectedPayment}
+				getPaymentTypeIcon={getPaymentTypeIcon}
+				Capitalize={Capitalize}
+			/>
 		</section>
 	);
 };
