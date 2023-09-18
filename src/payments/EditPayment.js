@@ -44,19 +44,38 @@ const EditPayment = () => {
 	};
 
 	useEffect(() => {
+		let isMounted = true;
 		if (id) {
 			PaymentService.getPaymentById(id).then((res) => {
-				setAmount(res.data.amount);
-				setType(res.data.type);
-				setPayer(res.data.payer);
-				setPayee(res.data.payee);
-				setDueDate(res.data.dueDate);
-				setPaidDate(res.data.paidDate);
-				setPending(res.data.pending);
-				setCompleted(res.data.completed);
+				if (isMounted) {
+					const {
+						amount,
+						type,
+						payer,
+						payee,
+						dueDate,
+						paidDate,
+						pending,
+						completed,
+					} = res.data;
+					// Update state
+					setAmount(amount);
+					setType(type);
+					setPayer(payer);
+					setPayee(payee);
+					setDueDate(dueDate);
+					setPaidDate(paidDate);
+					setPending(pending);
+					setCompleted(completed);
+				}
 			});
 		}
-	}, []);
+		// Cleanup
+		return () => {
+			isMounted = false;
+		};
+	}, [id]);
+
 	return (
 		<section className="container">
 			{loading ? (
