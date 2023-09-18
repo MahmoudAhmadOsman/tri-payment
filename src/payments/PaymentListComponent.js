@@ -25,7 +25,7 @@ const PaymentListComponent = () => {
 	// Initialize an array to store week options
 	const weekOptions = [];
 
-	// Generate week options dynamically for 52 weeks
+	// Generate week option - 52 weeks
 	for (let week = 1; week <= 52; week++) {
 		const startDate = new Date(currentYear, 0, 1 + (week - 1) * 7);
 		const endDate = new Date(currentYear, 0, 1 + week * 7 - 1);
@@ -62,12 +62,12 @@ const PaymentListComponent = () => {
 
 	const getPaymentTypeIcon = (paymentType) => {
 		const iconMappings = {
-			"Credit Card": "fa-credit-card",
+			CreditCard: "fa-credit-card",
 			PayPal: "fa-paypal",
-			"Bank Transfer": "fa-university",
+			BankTransfer: "fa-university",
 			Cash: "fa-money",
-			"Google Pay": "fa-google-wallet",
-			"Apple Pay": "fa-apple",
+			GooglePay: "fa-google-wallet",
+			ApplePay: "fa-apple",
 			Bitcoin: "fa-bitcoin",
 			visa: "fa-cc-visa",
 			mastercard: "fa-cc-mastercard",
