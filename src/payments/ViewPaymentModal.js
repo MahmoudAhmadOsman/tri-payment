@@ -51,12 +51,12 @@ const ViewPaymentModal = ({
 													)}`}
 												></i>
 
-												<td>
+												{/* <td>
 													{selectedPayment.pending ? (
 														<span>
 															<i
 																className="fa fa-check text-success fa-2x"
-																// title="Payment  is not pending!"
+																
 															></i>
 														</span>
 													) : (
@@ -64,33 +64,28 @@ const ViewPaymentModal = ({
 															<sup>
 																<i
 																	className="fa fa-times text-danger fa-2x"
-																	// title="Payment is pending!"
+																	
 																></i>
 															</sup>
 														</span>
 													)}
-												</td>
-												{/* <td>{selectedPayment.pending ? "YES" : "NO"}</td> */}
-												{/* <td>{selectedPayment.completed ? "YES " : "NO"}</td> */}
-												<td>
+												</td> */}
+												<td>{selectedPayment.pending ? "YES" : "NO"}</td>
+												<td>{selectedPayment.completed ? "YES " : "NO"}</td>
+
+												{/* <td>
 													{selectedPayment.completed ? (
 														<span>
-															<i
-																className="fa fa-check text-success fa-2x"
-																//  title="Payment is completed!"
-															></i>
+															<i className="fa fa-check text-success fa-2x"></i>
 														</span>
 													) : (
 														<span>
 															<sup>
-																<i
-																	className="fa fa-times text-danger fa-2x"
-																	// title="Payment is not completed!"
-																></i>
+																<i className="fa fa-times text-danger fa-2x"></i>
 															</sup>
 														</span>
 													)}
-												</td>
+												</td> */}
 											</tr>
 										</tbody>
 									</table>

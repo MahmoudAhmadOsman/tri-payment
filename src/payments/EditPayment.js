@@ -145,6 +145,11 @@ const EditPayment = () => {
 							<option value="0">NO</option>
 							<option value="1">YES</option>
 						</select>
+						<small className="text-primary" style={{ fontSize: "11px" }}>
+							<b>Note: </b>
+							Change payment status by updaing the status either pending or
+							completed.
+						</small>
 					</div>
 
 					{/* Payment Method Type   */}
