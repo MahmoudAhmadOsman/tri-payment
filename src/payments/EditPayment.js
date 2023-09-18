@@ -99,7 +99,7 @@ const EditPayment = () => {
 					</div>
 					<div className="col-md-4">
 						<h5>Payment Status</h5>
-						<label htmlFor="pending">Is Payment Pendig?</label>
+						<label htmlFor="pending">Pendig?</label>
 						<select
 							name="pending"
 							value={pending}
@@ -114,7 +114,7 @@ const EditPayment = () => {
 						</select>
 						{/* Completed  */}
 
-						<label htmlFor="pending">Completed</label>
+						<label htmlFor="pending">Completed?</label>
 						<select
 							name="completed"
 							value={completed}
