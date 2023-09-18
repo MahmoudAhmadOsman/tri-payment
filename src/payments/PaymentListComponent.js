@@ -7,9 +7,8 @@ import ViewPaymentModal from "./ViewPaymentModal";
 
 const PaymentListComponent = () => {
 	const [payments, setPayments] = useState([]);
-	const [error, setError] = useState(false);
-
 	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
 	const [selectedPayment, setSelectedPayment] = useState(null);
 
 	// Initialize state for selectedWeek
