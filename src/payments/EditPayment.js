@@ -124,8 +124,10 @@ const EditPayment = () => {
 								Select one
 							</option>
 							{/* <option value={pending}>{pending ? "YES" : "NO"}</option> */}
-							<option value={pending}>YES</option>
-							<option value={pending}>NO</option>
+							{/* <option value={pending}>YES</option>
+							<option value={pending}>NO</option> */}
+							<option value="0">{pending === 0 ? "NO" : ""}</option>
+							<option value="1">{pending === 1 ? "YES" : ""}</option>
 						</select>
 						{/* Completed  */}
 
@@ -142,8 +144,10 @@ const EditPayment = () => {
 								Select one
 							</option>
 							{/* <option value={completed}>{completed}</option> */}
-							<option value="0">NO</option>
-							<option value="1">YES</option>
+							{/* <option value="0">NO</option>
+							<option value="1">YES</option> */}
+							<option value="0">{completed === 0 ? "NO" : ""}</option>
+							<option value="1">{completed === 1 ? "YES" : ""}</option>
 						</select>
 						<small className="text-primary" style={{ fontSize: "11px" }}>
 							<b>Note: </b>
