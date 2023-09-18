@@ -156,8 +156,10 @@ const EditPayment = () => {
 
 									<option value="1">YES</option>
 									<option value="0">NO</option>
-									{/* <option value="0">{pending === 0 ? "NO" : "YES"}</option>
-							<option value="1">{pending === 1 ? "YES" : "NO"}</option> */}
+									{/* 
+									<option value="0">{pending === 0 ? "NO" : "YES"}</option>
+									<option value="1">{pending === 1 ? "YES" : "NO"}</option> 
+									*/}
 								</select>
 								{/* Completed  */}
 
