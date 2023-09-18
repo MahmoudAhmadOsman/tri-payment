@@ -151,8 +151,8 @@ const EditPayment = () => {
 						</select>
 						<small className="text-primary" style={{ fontSize: "11px" }}>
 							<b>Note: </b>
-							Change payment status by updaing the status either pending or
-							completed.
+							Change payment status by updating the payment status either
+							pending or completed.
 						</small>
 					</div>
 
