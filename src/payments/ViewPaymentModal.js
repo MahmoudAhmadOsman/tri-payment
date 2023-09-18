@@ -114,7 +114,7 @@ const ViewPaymentModal = ({
 							data-bs-dismiss="modal"
 							title="Close"
 						>
-							<i className="fa fa-times-circle-o fa-lg"></i>
+							<i className="fa fa-times"></i>
 						</button>
 					</div>
 				</div>
