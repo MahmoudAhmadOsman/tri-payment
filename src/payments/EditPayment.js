@@ -61,7 +61,9 @@ const EditPayment = () => {
 				<div className="row">
 					<div className="col-md-4">
 						<div className="input-group mb-3">
-							<span className="input-group-text">Amount</span>
+							<span htmlFor="amount" className="input-group-text">
+								Amount
+							</span>
 							<input
 								type="text"
 								value={amount}
@@ -74,7 +76,10 @@ const EditPayment = () => {
 						</div>
 
 						<div className="input-group mb-3">
-							<span className="input-group-text">Payer</span>
+							<span htmlFor="payer" className="input-group-text">
+								Payer
+							</span>
+
 							<input
 								type="text"
 								value={payer}
@@ -87,7 +92,9 @@ const EditPayment = () => {
 						</div>
 
 						<div className="input-group mb-3">
-							<span className="input-group-text">Payee</span>
+							<span htmlFor="payee" className="input-group-text">
+								Payee
+							</span>
 							<input
 								type="text"
 								value={payee}
@@ -100,6 +107,7 @@ const EditPayment = () => {
 					<div className="col-md-4">
 						<h5>Payment Status</h5>
 						<label htmlFor="pending">Pendig?</label>
+
 						<select
 							name="pending"
 							value={pending}
