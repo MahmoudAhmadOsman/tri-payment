@@ -18,7 +18,7 @@ const ViewPaymentModal = ({
 				<div className="modal-content">
 					<div className="modal-header">
 						<h1 className="modal-title text-dark fs-5" id="paymentModalPopUp">
-							Payment Details
+							Payment Qick View Panel
 						</h1>
 					</div>
 					<div className="modal-body">
