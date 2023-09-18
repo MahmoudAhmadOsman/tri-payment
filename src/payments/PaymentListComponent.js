@@ -52,9 +52,9 @@ const PaymentListComponent = () => {
 		return dateString;
 	};
 
-	function Capitalize(str) {
+	const Capitalize = (str) => {
 		return str.charAt(0).toUpperCase() + str.slice(1);
-	}
+	};
 
 	// Event handler for select change
 	const handleChange = (event) => {

@@ -17,6 +17,10 @@ const EditPayment = () => {
 	const [pending, setPending] = useState("");
 	const [completed, setCompleted] = useState("");
 
+	const Capitalize = (str) => {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
+
 	const paymentData = {
 		amount,
 		type,
@@ -117,8 +121,8 @@ const EditPayment = () => {
 							<option value="" disabled defaultValue>
 								Select one
 							</option>
-							<option value="1">NO</option>
-							<option value="0">YES</option>
+							<option value={pending}>{pending ? "YES" : "NO"}</option>
+							{/* <option value="0">YES</option> */}
 						</select>
 						{/* Completed  */}
 
@@ -132,8 +136,8 @@ const EditPayment = () => {
 							<option value="" disabled defaultValue>
 								Select one
 							</option>
-							<option value="1">YES</option>
-							<option value="0">NO</option>
+							<option value={completed}>{completed ? "YES" : "NO"}</option>
+							{/* <option value="0">NO</option> */}
 						</select>
 					</div>
 
@@ -150,7 +154,7 @@ const EditPayment = () => {
 								Select one
 							</option>
 
-							<option value="Visa">Visa</option>
+							<option value={type}>{Capitalize(type)}</option>
 							<option value="Americanexpress">Americanexpress</option>
 							<option value="Mastercard">Mastercard</option>
 							<option value="Paypal">Paypal</option>
