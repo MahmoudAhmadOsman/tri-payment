@@ -9,7 +9,7 @@ const ViewPaymentModal = ({
 	return (
 		<div
 			className="modal fade"
-			id="paymentModalPopUp"
+			id="exampleModal"
 			tabIndex={-1}
 			aria-labelledby="paymentModalPopUp"
 			aria-hidden="true"
