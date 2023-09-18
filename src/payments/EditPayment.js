@@ -110,7 +110,9 @@ const EditPayment = () => {
 					</div>
 					<div className="col-md-4">
 						<h5>Payment Status</h5>
-						<label htmlFor="pending">Pendig?</label>
+						<label htmlFor="pending">
+							Pendig?: &nbsp; {pending ? "YES" : "NO"}
+						</label>
 
 						<select
 							name="pending"
@@ -121,12 +123,15 @@ const EditPayment = () => {
 							<option value="" disabled defaultValue>
 								Select one
 							</option>
-							<option value={pending}>{pending ? "YES" : "NO"}</option>
-							{/* <option value="0">YES</option> */}
+							{/* <option value={pending}>{pending ? "YES" : "NO"}</option> */}
+							<option value={pending}>YES</option>
+							<option value={pending}>NO</option>
 						</select>
 						{/* Completed  */}
 
-						<label htmlFor="pending">Completed?</label>
+						<label htmlFor="pending">
+							Completed?: &nbsp; {completed ? "YES" : "NO"}
+						</label>
 						<select
 							name="completed"
 							value={completed}
@@ -136,8 +141,9 @@ const EditPayment = () => {
 							<option value="" disabled defaultValue>
 								Select one
 							</option>
-							<option value={completed}>{completed ? "YES" : "NO"}</option>
-							{/* <option value="0">NO</option> */}
+							{/* <option value={completed}>{completed}</option> */}
+							<option value="0">NO</option>
+							<option value="1">YES</option>
 						</select>
 					</div>
 
