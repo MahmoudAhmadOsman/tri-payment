@@ -176,12 +176,8 @@ const EditPayment = () => {
 										Select one
 									</option>
 
-									<option value="1">YES</option>
 									<option value="0">NO</option>
-									{/* 
-									<option value="0">{pending === 0 ? "NO" : "YES"}</option>
-									<option value="1">{pending === 1 ? "YES" : "NO"}</option> 
-									*/}
+									<option value="1">YES</option>
 								</select>
 								{/* Completed  */}
 
@@ -200,13 +196,10 @@ const EditPayment = () => {
 
 									<option value="0">NO</option>
 									<option value="1">YES</option>
-									{/* <option value="0">{completed === 0 ? "NO" : "YES"}</option>
-							<option value="1">{completed === 1 ? "YES" : "NO"}</option> */}
 								</select>
-								<small className="text-primary" style={{ fontSize: "11px" }}>
+								<small className="text-primary">
 									<b>Note: </b>
-									Change payment status by updating the payment status either
-									pending or completed.
+									Update the payment status to either 'pending' or 'completed'!
 								</small>
 							</div>
 

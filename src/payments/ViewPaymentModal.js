@@ -23,7 +23,7 @@ const ViewPaymentModal = ({
 					</div>
 					<div className="modal-body">
 						{selectedPayment ? (
-							<>
+							<React.Fragment>
 								<div className="table-responsive" style={{ fontSize: "12px" }}>
 									<table className="table table-striped table-bordered table-hover">
 										<thead>
@@ -70,8 +70,28 @@ const ViewPaymentModal = ({
 														</span>
 													)}
 												</td> */}
-												<td>{selectedPayment.pending ? "YES" : "NO"}</td>
-												<td>{selectedPayment.completed ? "YES " : "NO"}</td>
+												<td>
+													{selectedPayment.pending === "1" ? (
+														<span>YES</span>
+													) : selectedPayment.pending === "0" ? (
+														<span>NO</span>
+													) : (
+														<span>{selectedPayment.pending}</span>
+													)}
+												</td>
+												{/* <td>{selectedPayment.completed ? "YES" : "NO"}</td> */}
+												<td>
+													{" "}
+													{selectedPayment.completed === "1" ? (
+														<span>
+															<i className="fa fa-check text-success fa-2x"></i>{" "}
+														</span>
+													) : selectedPayment.completed === "0" ? (
+														<span>NO</span>
+													) : (
+														<span>{selectedPayment.completed}</span>
+													)}
+												</td>
 
 												{/* <td>
 													{selectedPayment.completed ? (
@@ -97,7 +117,7 @@ const ViewPaymentModal = ({
 										{formatDate(selectedPayment.dueDate)}
 									</i>{" "}
 								</p>
-							</>
+							</React.Fragment>
 						) : (
 							<h6 className="text-danger text-center">No payment selected!</h6>
 						)}

@@ -221,20 +221,34 @@ const PaymentListComponent = () => {
 													// }
 													>
 														{formatDate(ensureDateInPast(payment.paidDate))}
-														{payment.paidDate &&
-														payment.dueDate &&
-														!payment.pending &&
-														payment.completed ? (
-															<p
-																className="text-success"
-																style={{ fontSize: "9px" }}
-															>
-																{" "}
-																Thanks for payment
-															</p>
-														) : (
-															""
-														)}
+														{
+															payment.paidDate &&
+															payment.dueDate &&
+															!payment.pending &&
+															payment.completed &&
+															payment.paidDate <= payment.dueDate ? (
+																<p
+																	className="text-success"
+																	style={{ fontSize: "9px" }}
+																>
+																	{" "}
+																	Thanks for payment
+																</p>
+															) : (
+																""
+															)
+															// payment.paidDate && // Ensure there's a paidDate
+															// 	!payment.pending && // Ensure the payment is not pending
+															// 	payment.completed && // Ensure the payment is completed
+															// 	payment.paidDate <= payment.dueDate && ( // Check if paidDate is before dueDate
+															// 		<p
+															// 			className="text-success"
+															// 			style={{ fontSize: "9px" }}
+															// 		>
+															// 			Thanks for payment
+															// 		</p>
+															// 	)
+														}
 													</td>
 
 													{/* <td>{payment.pending ? "Yes" : "No"}</td> */}
