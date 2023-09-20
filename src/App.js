@@ -9,7 +9,7 @@ import PaymentChart from "./chart/PaymentChart";
 
 function App() {
 	const routes = [
-		{ path: "/payment-chart", element: <PaymentChart /> },
+		{ path: "/payments/payment-chart", element: <PaymentChart /> },
 		{ path: "/payments", element: <PaymentListComponent /> },
 		{ path: "/payments/view-payment/:id", element: <EditPayment /> },
 		{ path: "/", exact: true, element: <HomeComponent /> },

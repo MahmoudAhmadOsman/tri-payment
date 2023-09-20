@@ -167,7 +167,10 @@ const PaymentListComponent = () => {
 							</div>
 							<div className="col-md-7">
 								<h6>See data in chart</h6>
-								<Link to="/payment-chart" className="btn btn-outline-success">
+								<Link
+									to="/payments/payment-chart"
+									className="btn btn-outline-success"
+								>
 									See data
 								</Link>
 							</div>
