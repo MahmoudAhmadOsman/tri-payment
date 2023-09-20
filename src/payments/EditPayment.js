@@ -7,6 +7,8 @@ import Loading from "../utils/Loading";
 const EditPayment = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
+	const [workingOnMessage, setWorkingOnMessage] = useState(false);
+
 	const navigate = useNavigate();
 	const { id } = useParams();
 
@@ -41,6 +43,10 @@ const EditPayment = () => {
 		// PaymentService.updatePayment(id, paymentData).then(() => {
 		// 	navigate("/payments");
 		// });
+		setWorkingOnMessage(true);
+		setTimeout(() => {
+			setWorkingOnMessage(false);
+		}, 4000);
 	};
 
 	useEffect(() => {
@@ -78,6 +84,15 @@ const EditPayment = () => {
 
 	return (
 		<section className="container">
+			{workingOnMessage ? (
+				<div className="alert alert-warning mt-4">
+					<span className="lead">
+						Still working on this section! check back again!
+					</span>
+				</div>
+			) : (
+				""
+			)}
 			{loading ? (
 				<div>
 					<Loading />
