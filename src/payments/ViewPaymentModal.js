@@ -1,4 +1,6 @@
 import React from "react";
+import numeral from "numeral";
+import accounting from "accounting";
 
 const ViewPaymentModal = ({
 	selectedPayment,
@@ -41,9 +43,23 @@ const ViewPaymentModal = ({
 												<td>{selectedPayment.invoice}</td>
 												<td>
 													$
-													{selectedPayment.amount.toLocaleString("en-US", {
+													{/* {selectedPayment.amount.toLocaleString("en-US", {
 														minimumFractionDigits: 2,
-													})}
+														style: "currency",
+														currency: "USD",
+													})} */}
+													{/* {new Intl.NumberFormat().format(
+														selectedPayment.amount,
+														
+													)} */}
+													{new Intl.NumberFormat()
+														.format(selectedPayment.amount)
+														.toLocaleString("en-US", {
+															style: "currency",
+															currency: "USD",
+															minimumFractionDigits: 2,
+															maximumFractionDigits: 2,
+														})}
 												</td>
 												<i
 													className={`fa fa-3x ${getPaymentTypeIcon(

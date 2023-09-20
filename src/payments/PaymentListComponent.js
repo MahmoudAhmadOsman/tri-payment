@@ -199,9 +199,17 @@ const PaymentListComponent = () => {
 													<td>{payment.invoice}</td>
 													<td>
 														$
-														{payment.amount.toLocaleString("en-US", {
+														{/* {payment.amount.toLocaleString("en-US", {
 															minimumFractionDigits: 2,
-														})}
+														})} */}
+														{new Intl.NumberFormat()
+															.format(payment.amount)
+															.toLocaleString("en-US", {
+																style: "currency",
+																currency: "USD",
+																minimumFractionDigits: 2,
+																maximumFractionDigits: 2,
+															})}
 													</td>
 													{/* <td>
 														<i
