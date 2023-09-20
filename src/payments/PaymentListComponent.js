@@ -18,6 +18,7 @@ const PaymentListComponent = () => {
 	const currentYear = new Date().getFullYear();
 
 	const userRole = "ADMIN1";
+	const guestRole = "GUEST";
 
 	//Format paidDate Date
 	const formatDate = (dateString) => {
@@ -310,7 +311,7 @@ const PaymentListComponent = () => {
 														) : (
 															<button
 																className="btn btn-outline-danger btn-sm disableds"
-																title={`Your role is: ${userRole}. You are not allowed to delete a payment record!`}
+																title={`Your role is: ${guestRole}. You are not allowed to delete a payment record!`}
 																onClick={(e) =>
 																	unableToDeletePayment(e, payment.id)
 																}
