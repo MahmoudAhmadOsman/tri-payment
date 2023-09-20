@@ -9,6 +9,7 @@ const HomeComponent = () => {
 		"https://source.unsplash.com/1500x1000/?money",
 		"https://source.unsplash.com/1500x1000/?dollar-exchange",
 		"https://source.unsplash.com/1500x1000/?stock-exchange",
+		"https://source.unsplash.com/1500x1000/?euro",
 	];
 	return (
 		<section className="home-page">
@@ -104,7 +105,7 @@ const HomeComponent = () => {
 					{/* Card 1 */}
 					<div className="col-md-3 mb-4">
 						<div className="card">
-							<img src={images[0]} alt="Card Image" className="card-img-top" />
+							<img src={images[3]} alt="Card Image" className="card-img-top" />
 							<div className="card-body">
 								<h2 className="card-title">Currency Conversion Made Easy</h2>
 								<p className="card-text">
