@@ -7,7 +7,7 @@ import Loading from "../utils/Loading";
 const EditPayment = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const [workingOnMessage, setWorkingOnMessage] = useState(false);
+	// const [workingOnMessage, setWorkingOnMessage] = useState(false);
 
 	const navigate = useNavigate();
 	const { id } = useParams();
@@ -40,13 +40,39 @@ const EditPayment = () => {
 	//Write update function here
 	const updatePayment = (e) => {
 		e.preventDefault();
+		if (
+			amount === "" ||
+			type === "" ||
+			payer === "" ||
+			dueDate === "" ||
+			paidDate === "" ||
+			pending === "" ||
+			completed === ""
+		) {
+			// setError(true);
+			alert("Please fill all the fields");
+			return;
+		}
+		console.log(paymentData);
+
 		// PaymentService.updatePayment(id, paymentData).then(() => {
 		// 	navigate("/payments");
 		// });
-		setWorkingOnMessage(true);
-		setTimeout(() => {
-			setWorkingOnMessage(false);
-		}, 4000);
+
+		if (id) {
+			PaymentService.patchPayment(id, paymentData)
+				.then(() => {
+					navigate("/payments");
+				})
+				.catch((error) => {
+					console.log(error.message);
+				});
+		}
+
+		// setWorkingOnMessage(true);
+		// setTimeout(() => {
+		// 	setWorkingOnMessage(false);
+		// }, 4000);
 	};
 
 	useEffect(() => {
@@ -84,7 +110,7 @@ const EditPayment = () => {
 
 	return (
 		<section className="container">
-			{workingOnMessage ? (
+			{/* {workingOnMessage ? (
 				<div className="alert alert-warning mt-4">
 					<span className="lead">
 						Still working on this section! check back again!
@@ -92,7 +118,7 @@ const EditPayment = () => {
 				</div>
 			) : (
 				""
-			)}
+			)} */}
 			{loading ? (
 				<div>
 					<Loading />
@@ -217,14 +243,28 @@ const EditPayment = () => {
 									</option>
 
 									<option value={type}>{Capitalize(type)}</option>
-									<option value="Americanexpress">Americanexpress</option>
-									<option value="Mastercard">Mastercard</option>
-									<option value="Paypal">Paypal</option>
-									<option value="Cash">Cash</option>
-									<option value="Apple Pay">Apple Pay</option>
-									<option value="Bitcoin">Bitcoin</option>
-									<option value="Other">Other</option>
+									<option value="Visa">Visa</option>
+									<option value="americanexpress">AmericanExpress</option>
+									<option value="mastercard">Mastercard</option>
+									<option value="paypal">Paypal</option>
+									<option value="cash">Cash</option>
+									<option value="applepay">Apple Pay</option>
+									<option value="banktransfer">Bank Transfer</option>
+									<option value="bitcoin">Bitcoin</option>
+									<option value="other">Other</option>
 								</select>
+								{/* DueDate */}
+								<label htmlFor="dueDate">Due Date</label>
+								<input
+									type="date"
+									className="form-control form-control-lg"
+									value={dueDate}
+									onChange={(e) => setDueDate(e.target.value)}
+									id="dueDate"
+									name="dueDate"
+									placeholder="Enter due date"
+								/>
+
 								{/* Paid Date  */}
 								<label htmlFor="paidDate">Paid Date</label>
 								<input
@@ -250,7 +290,7 @@ const EditPayment = () => {
 								UPDATE
 							</button>
 							<Link
-								to="/"
+								to="/payments"
 								className="btn btn-outline-warning btn-lg mt-3 ms-3 fw-bold me-1"
 							>
 								CANCEL

@@ -62,13 +62,13 @@ const PaymentListComponent = () => {
 
 	const getPaymentTypeIcon = (paymentType) => {
 		const iconMappings = {
-			CreditCard: "fa-credit-card",
-			PayPal: "fa-paypal",
-			BankTransfer: "fa-university",
-			Cash: "fa-money",
-			GooglePay: "fa-google-wallet",
-			ApplePay: "fa-apple",
-			Bitcoin: "fa-bitcoin",
+			creditcard: "fa-credit-card",
+			paypal: "fa-paypal",
+			banktransfer: "fa-university",
+			cash: "fa-money",
+			googlepay: "fa-google-wallet",
+			applepay: "fa-apple",
+			bitcoin: "fa-bitcoin",
 			visa: "fa-cc-visa",
 			mastercard: "fa-cc-mastercard",
 			americanexpress: "fa-cc-amex",

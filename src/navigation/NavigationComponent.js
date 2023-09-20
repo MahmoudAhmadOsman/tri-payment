@@ -30,6 +30,15 @@ const NavigationComponent = () => {
 									Home
 								</Link>
 							</li>
+							<li className="nav-item">
+								<Link
+									className="nav-link active"
+									aria-current="page"
+									to="/payments"
+								>
+									Payments{" "}
+								</Link>
+							</li>
 						</ul>
 					</div>
 				</div>
