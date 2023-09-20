@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Loading from "../../utils/Loading";
+
 import "./HomeComponentStyle.css";
+import PaymentChart from "../../chart/PaymentChart";
 
 const HomeComponent = () => {
 	const [loading, setLoading] = useState(true);

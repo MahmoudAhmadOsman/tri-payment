@@ -165,6 +165,11 @@ const PaymentListComponent = () => {
 									</select>
 								</div>
 							</div>
+							<div className="col-md-7">
+								<Link to="/payment-chart" className="btn btn-outline-success">
+									See Data in Chart
+								</Link>
+							</div>
 						</div>
 						{/* End of row 1 */}
 						<div className="row">

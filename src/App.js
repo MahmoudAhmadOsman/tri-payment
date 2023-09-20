@@ -5,10 +5,12 @@ import NavigationComponent from "./navigation/NavigationComponent";
 import FooterComponent from "./components/footer/FooterComponent";
 import EditPayment from "./payments/EditPayment";
 import HomeComponent from "./components/home/HomeComponent";
+import PaymentChart from "./chart/PaymentChart";
 
 function App() {
 	const routes = [
-		{ path: "/payments", exact: true, element: <PaymentListComponent /> },
+		{ path: "/payment-chart", element: <PaymentChart /> },
+		{ path: "/payments", element: <PaymentListComponent /> },
 		{ path: "/payments/view-payment/:id", element: <EditPayment /> },
 		{ path: "/", exact: true, element: <HomeComponent /> },
 
