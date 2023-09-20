@@ -109,10 +109,10 @@ const HomeComponent = () => {
 							<div className="card-body">
 								<h2 className="card-title">Currency Conversion Made Easy</h2>
 								<p className="card-text">
-									Description:** Explore hassle-free currency exchange services
-									that provide real-time rates and user-friendly tools for
-									travelers and businesses alike. Say goodbye to complex
-									calculations and hello to seamless money exchange.{" "}
+									Explore hassle-free currency exchange services that provide
+									real-time rates and user-friendly tools for travelers and
+									businesses alike. Say goodbye to complex calculations and
+									hello to seamless money exchange.{" "}
 								</p>
 							</div>
 						</div>
