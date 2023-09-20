@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 // import data from "../data/data.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../utils/Loading";
 import PaymentService from "../service/PaymentService";
 import ViewPaymentModal from "./ViewPaymentModal";
 
 const PaymentListComponent = () => {
+	const navigate = useNavigate();
 	const [payments, setPayments] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 	const [selectedPayment, setSelectedPayment] = useState(null);
+	const [unableToDelete, setUnableToDelete] = useState(false);
 
 	// Initialize state for selectedWeek
 	const [selectedWeek, setSelectedWeek] = useState("");
-
 	const currentYear = new Date().getFullYear();
+
+	const userRole = "ADMIN1";
 
 	//Format paidDate Date
 	const formatDate = (dateString) => {
@@ -74,7 +77,7 @@ const PaymentListComponent = () => {
 			americanexpress: "fa-cc-amex",
 		};
 
-		return iconMappings[paymentType] || "fa-money";
+		return iconMappings[paymentType] || "fa-question";
 	};
 
 	// Function to update selectedPayment when a "View" button is clicked
@@ -94,6 +97,27 @@ const PaymentListComponent = () => {
 			});
 	};
 
+	const unableToDeletePayment = (e) => {
+		e.preventDefault();
+		setUnableToDelete(true);
+		setTimeout(() => {
+			setUnableToDelete(false);
+		}, 4000);
+	};
+
+	const deletePayment = async (e, id) => {
+		e.preventDefault();
+		await PaymentService.deletePayment(id)
+			.then((res) => {
+				getPayments();
+				navigate("/payments");
+			})
+			.catch((error) => {
+				// setError(true);
+				console.error(error.message);
+			});
+	};
+
 	useEffect(() => {
 		getPayments();
 	}, []);
@@ -107,6 +131,14 @@ const PaymentListComponent = () => {
 			) : (
 				<React.Fragment>
 					<div className="container shadow-lg p-3 mb-5 bg-body rounded">
+						{/* Unable to delete payment  message */}
+						{unableToDelete ? (
+							<div className="alert alert-warning">
+								<span>You don't have permission to delete this payment!</span>
+							</div>
+						) : (
+							""
+						)}
 						<h3 className="mt-3">Weekly Payment Options</h3> <hr />
 						{/* Start of row 1 */}
 						<div className="row">
@@ -253,13 +285,25 @@ const PaymentListComponent = () => {
 														>
 															<i className="fa fa-pencil"></i>
 														</Link>
-
-														<button
-															className="btn btn-outline-danger btn-sm"
-															title={`Delete ${payment.payee} record!`}
-														>
-															<i className="fa fa-trash-o"></i>
-														</button>
+														{userRole === "ADMIN" ? (
+															<button
+																className="btn btn-outline-danger btn-sm"
+																title={`Delete ${payment.payee} record!`}
+																onClick={(e) => deletePayment(e, payment.id)}
+															>
+																<i className="fa fa-trash-o"></i>
+															</button>
+														) : (
+															<button
+																className="btn btn-outline-danger btn-sm disableds"
+																title={`Your role is: ${userRole}. You are not allowed to delete a payment record!`}
+																onClick={(e) =>
+																	unableToDeletePayment(e, payment.id)
+																}
+															>
+																<i className="fa fa-trash-o"></i>
+															</button>
+														)}
 													</td>
 												</tr>
 											))}
