@@ -31,7 +31,7 @@ const PaymentLinks = () => {
 								to="/payments"
 								class="btn btn-outline-primary btn-lg fw-bold d-block border-2"
 							>
-								Add New Payment
+								Payment List
 							</Link>
 						</div>
 						<div className="small-desc">
