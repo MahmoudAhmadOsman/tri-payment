@@ -18,7 +18,7 @@ import { LoginComponent } from "./user/LoginComponent";
 function App() {
 	const [loading, setLoading] = useState(true);
 	const routes = [
-		{ path: "/login", element: <LoginComponent /> },
+		{ path: "/users/login", element: <LoginComponent /> },
 		{ path: "/payments/payment-chart", element: <PaymentChart /> },
 		{ path: "/add-new-payment", element: <AddNewPaymentComponent /> },
 		{ path: "/payment-actions", element: <PaymentLinks /> },
