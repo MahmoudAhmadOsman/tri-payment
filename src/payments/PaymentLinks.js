@@ -8,7 +8,7 @@ const PaymentLinks = () => {
 			<div className="container mt-4">
 				<h1 className="text-primary">Payment Options</h1>
 				<hr />
-				<p className="lead">Please choose the opton you want to perform.</p>
+				<p className="lead">Please select the option you'd like to perform.</p>
 				<div className="row">
 					<div className="col">
 						<div className="add-payment">
@@ -21,7 +21,7 @@ const PaymentLinks = () => {
 						</div>
 						<div className="small-desc">
 							<p className="text-muted">
-								Select this option if you want to create new payment record.
+								Choose this option to create a new payment record.
 							</p>
 						</div>
 					</div>
@@ -36,7 +36,7 @@ const PaymentLinks = () => {
 						</div>
 						<div className="small-desc">
 							<p className="text-muted">
-								Select this option if you want to see list of payment records.
+								Choose this option to view a list of payment records.
 							</p>
 						</div>
 					</div>
