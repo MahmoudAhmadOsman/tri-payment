@@ -21,7 +21,7 @@ function App() {
 		{ path: "/users/login", element: <LoginComponent /> },
 		{ path: "/payments/payment-chart", element: <PaymentChart /> },
 		{ path: "/payments/add-new-payment", element: <AddNewPaymentComponent /> },
-		{ path: "/payment-actions", element: <PaymentLinks /> },
+		{ path: "/payments/payment-actions", element: <PaymentLinks /> },
 		{ path: "/payments", element: <PaymentListComponent /> },
 		{ path: "/payments/view-payment/:id", element: <EditPayment /> },
 		{ path: "/", exact: true, element: <HomeComponent /> },

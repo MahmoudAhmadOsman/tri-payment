@@ -34,7 +34,7 @@ const NavigationComponent = () => {
 								<Link
 									className="nav-link active"
 									aria-current="page"
-									to="/payment-actions"
+									to="/payments/payment-actions"
 								>
 									Payments{" "}
 								</Link>
