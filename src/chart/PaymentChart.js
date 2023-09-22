@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart, ArcElement, Tooltip, Legend, Title } from "chart.js";
-
 Chart.register(ArcElement, Tooltip, Legend, Title);
 Chart.defaults.plugins.tooltip.backgroundColor = "rgb(0, 0, 156)";
 Chart.defaults.plugins.legend.position = "right";

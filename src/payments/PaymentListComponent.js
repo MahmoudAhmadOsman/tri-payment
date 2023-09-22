@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import data from "../data/data.json";
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../utils/Loading";
 import PaymentService from "../service/PaymentService";
@@ -17,7 +18,7 @@ const PaymentListComponent = () => {
 	const [selectedWeek, setSelectedWeek] = useState("");
 	const currentYear = new Date().getFullYear();
 
-	const userRole = "ADMIN1";
+	const userRoleAdmin = "ADMIN";
 	const guestRole = "GUEST";
 
 	//Format paidDate Date
@@ -110,11 +111,33 @@ const PaymentListComponent = () => {
 		e.preventDefault();
 		await PaymentService.deletePayment(id)
 			.then((res) => {
+				toast.error(`The record ${id} has been deleleted!`, {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
 				getPayments();
 				navigate("/payments");
 			})
 			.catch((error) => {
 				// setError(true);
+				toast.error(
+					`An error has occurred  ${error.message} while trying to delete payment with an id of: ${id}`,
+					{
+						position: "top-right",
+						autoClose: 5000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+						draggable: true,
+						progress: undefined,
+					}
+				);
+
 				console.error(error.message);
 			});
 	};
@@ -317,7 +340,7 @@ const PaymentListComponent = () => {
 														>
 															<i className="fa fa-pencil"></i>
 														</Link>
-														{userRole === "ADMIN" ? (
+														{userRoleAdmin === "ADMIN" ? (
 															<button
 																className="btn btn-outline-danger btn-sm"
 																title={`Delete ${payment.payee} record!`}

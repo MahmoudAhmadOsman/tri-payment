@@ -1,0 +1,12 @@
+.payment-links {
+	position: relative;
+}
+.payment-links .add-payment,
+.payment-links .payment-list {
+	width: auto;
+	/* height: 50px; */
+	/* background-color: #444; */
+	border: 2px solid #444;
+	padding: 25px;
+	margin-bottom: 20px;
+}

@@ -1,4 +1,7 @@
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 import PaymentListComponent from "./payments/PaymentListComponent";
 import NotFound from "./utils/NotFound";
 import NavigationComponent from "./navigation/NavigationComponent";
@@ -6,10 +9,17 @@ import FooterComponent from "./components/footer/FooterComponent";
 import EditPayment from "./payments/EditPayment";
 import HomeComponent from "./components/home/HomeComponent";
 import PaymentChart from "./chart/PaymentChart";
+import React, { useState } from "react";
+import Loading from "./utils/Loading";
+import AddNewPaymentComponent from "./payments/AddNewPaymentComponent";
+import PaymentLinks from "./payments/PaymentLinks";
 
 function App() {
+	const [loading, setLoading] = useState(true);
 	const routes = [
 		{ path: "/payments/payment-chart", element: <PaymentChart /> },
+		{ path: "/add-new-payment", element: <AddNewPaymentComponent /> },
+		{ path: "/payment-actions", element: <PaymentLinks /> },
 		{ path: "/payments", element: <PaymentListComponent /> },
 		{ path: "/payments/view-payment/:id", element: <EditPayment /> },
 		{ path: "/", exact: true, element: <HomeComponent /> },
@@ -27,11 +37,19 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<>
-				<NavigationComponent />
-				<Routes>{routeComponents}</Routes>
-				<FooterComponent />
-			</>
+			<ToastContainer />
+			{loading ? (
+				<>
+					<Loading />
+					{setLoading(false)}
+				</>
+			) : (
+				<React.Fragment>
+					<NavigationComponent />
+					<Routes>{routeComponents}</Routes>
+					<FooterComponent />
+				</React.Fragment>
+			)}
 		</BrowserRouter>
 	);
 }
