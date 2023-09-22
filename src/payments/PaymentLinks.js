@@ -13,7 +13,7 @@ const PaymentLinks = () => {
 					<div className="col">
 						<div className="add-payment">
 							<Link
-								to="/add-new-payment"
+								to="/payments/add-new-payment"
 								class="btn btn-outline-success btn-lg fw-bold d-block border-2"
 							>
 								Add New Payment

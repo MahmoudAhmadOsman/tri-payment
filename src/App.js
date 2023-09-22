@@ -20,7 +20,7 @@ function App() {
 	const routes = [
 		{ path: "/users/login", element: <LoginComponent /> },
 		{ path: "/payments/payment-chart", element: <PaymentChart /> },
-		{ path: "/add-new-payment", element: <AddNewPaymentComponent /> },
+		{ path: "/payments/add-new-payment", element: <AddNewPaymentComponent /> },
 		{ path: "/payment-actions", element: <PaymentLinks /> },
 		{ path: "/payments", element: <PaymentListComponent /> },
 		{ path: "/payments/view-payment/:id", element: <EditPayment /> },
