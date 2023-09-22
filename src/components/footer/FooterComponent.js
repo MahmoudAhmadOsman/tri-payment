@@ -50,9 +50,9 @@ const FooterComponent = () => {
 								TRI-PAYMENT SYSTEMS, INC.
 							</h6>
 							<p>
-								https://secure.gotapco.com/#/login Mahmoud Osman, a seasoned
-								fusoftware engineer with extensive experience in the field, has
-								spearheaded the development of this project.
+								Mahmoud Osman, a seasoned fusoftware engineer with extensive
+								experience in the field, has spearheaded the development of this
+								project.
 							</p>
 						</div>
 						{/* Grid column */}
