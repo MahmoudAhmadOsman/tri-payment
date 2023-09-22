@@ -184,7 +184,7 @@ const EditPayment = () => {
 							<div className="col-md-4">
 								<h5>Payment Status</h5>
 								<label htmlFor="pending">
-									Pendig?: &nbsp; {pending ? "YES" : "NO"}
+									Pendig Status?: &nbsp; {pending === "1" ? "YES" : "NO"}
 								</label>
 
 								<select
@@ -193,17 +193,17 @@ const EditPayment = () => {
 									onChange={(e) => setPending(e.target.value)}
 									className="form-select form-select-lg"
 								>
-									<option value="" disabled defaultValue>
+									<option disabled defaultValue>
 										Select one
 									</option>
 
-									<option value="0">NO</option>
-									<option value="1">YES</option>
+									<option value={0}>NO</option>
+									<option value={1}>YES</option>
 								</select>
 								{/* Completed  */}
 
-								<label htmlFor="pending">
-									Completed?: &nbsp; {completed ? "YES" : "NO"}
+								<label htmlFor="completed">
+									Completed Status?: {completed === "1" ? "YES" : "NO"}
 								</label>
 								<select
 									name="completed"
@@ -214,7 +214,6 @@ const EditPayment = () => {
 									<option value="" disabled defaultValue>
 										Select one
 									</option>
-
 									<option value="0">NO</option>
 									<option value="1">YES</option>
 								</select>

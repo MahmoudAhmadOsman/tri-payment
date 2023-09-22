@@ -207,27 +207,16 @@ const PaymentListComponent = () => {
 											<tr>
 												<th>Invoice #</th>
 												<th>Amount</th>
-												{/* <th>Method Type</th> */}
 												<th>Payer</th>
 												<th>Payee</th>
 												<th>Due Date</th>
 												<th>Paid Date</th>
-
-												{/* <th>Pending</th>
-												<th>Completed</th> */}
 												<th>Actions</th>
 											</tr>
 										</thead>
 										<tbody>
 											{payments.map((payment, id) => (
-												<tr
-													key={payment.id}
-													// className={
-													// 	payment.paidDate < payment.dueDate
-													// 		? "table-success"
-													// 		: "table-danger"
-													// }
-												>
+												<tr key={payment.id}>
 													<td>{payment.invoice}</td>
 													<td>
 														$
@@ -237,92 +226,31 @@ const PaymentListComponent = () => {
 														{new Intl.NumberFormat()
 															.format(payment.amount)
 															.toLocaleString("en-US", {
-																style: "currency",
-																currency: "USD",
 																minimumFractionDigits: 2,
 																maximumFractionDigits: 2,
+																style: "currency",
+																currency: "USD",
 															})}
 													</td>
-													{/* <td>
-														<i
-															className={`fa ${getPaymentTypeIcon(
-																payment.type
-															)}`}
-														></i>
-														{Capitalize(payment.type)}
-													</td> */}
 													<td>{payment.payer}</td>
 													<td>{payment.payee}</td>
 													<td>{formatDate(payment.dueDate)}</td>
-													<td
-													// className={
-													// 	payment.paidDate >= payment.dueDate
-													// 		? "text-success"
-													// 		: "text-darks"
-													// }
-													>
+													<td>
 														{formatDate(ensureDateInPast(payment.paidDate))}
-														{
-															payment.paidDate &&
-															payment.dueDate &&
-															!payment.pending &&
-															payment.completed &&
-															payment.paidDate <= payment.dueDate ? (
-																<p
-																	className="text-success"
-																	style={{ fontSize: "9px" }}
-																>
-																	{" "}
-																	Thanks for payment
-																</p>
-															) : (
-																""
-															)
-															// payment.paidDate && // Ensure there's a paidDate
-															// 	!payment.pending && // Ensure the payment is not pending
-															// 	payment.completed && // Ensure the payment is completed
-															// 	payment.paidDate <= payment.dueDate && ( // Check if paidDate is before dueDate
-															// 		<p
-															// 			className="text-success"
-															// 			style={{ fontSize: "9px" }}
-															// 		>
-															// 			Thanks for payment
-															// 		</p>
-															// 	)
-														}
+														{payment.completed === "1" &&
+														payment.pending !== "1" ? (
+															<p
+																className="text-success"
+																style={{ fontSize: "9px" }}
+															>
+																Thank for payment{" "}
+															</p>
+														) : (
+															""
+														)}
 													</td>
 
-													{/* <td>{payment.pending ? "Yes" : "No"}</td> */}
-													{/* <td>
-														{payment.completed ? (
-															<span>
-																<i className="fa fa-check-square-o text-success"></i>
-															</span>
-														) : (
-															<span>
-																<i className="fa fa-times text-danger"></i>
-															</span>
-														)}
-													</td> */}
-
 													<td className="d-flex justify-content-between">
-														{/* <Link
-															to={`/payments/view-payment/${payment.id}`}
-															className="btn btn-outline-success btn-sm "
-															title={`View ${payment.payee} record!`}
-														>
-															<i className="fa fa-eye"></i>
-														</Link> */}
-														{/* <Link
-															to={`${payment.invoice}`}
-															className="btn btn-outline-success btn-sm"
-															data-bs-toggle="modal"
-															data-bs-target="#exampleModal"
-														>
-															 
-															View
-														</Link> */}
-
 														<button
 															className="btn btn-outline-warning btn-sm"
 															data-bs-toggle="modal"
