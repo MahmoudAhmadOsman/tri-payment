@@ -104,8 +104,8 @@ const PaymentListComponent = () => {
 		setUnableToDelete(true);
 		setTimeout(() => {
 			setUnableToDelete(false);
-		}, 4000);
-		// window.location.href = "/payments";
+			window.location.href = "/login";
+		}, 2000);
 	};
 
 	const deletePayment = async (e, id) => {
