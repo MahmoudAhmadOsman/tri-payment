@@ -2,25 +2,24 @@ import React, { useEffect, useState } from "react";
 
 const AddNewPaymentComponent = () => {
 	const [formData, setFormData] = useState({
-		invoice: "", // Initialize as an empty string
+		invoice: "",
 		amount: "",
 		type: "Visa",
 		payer: "",
 		payee: "",
 		dueDate: "",
-		paidDate: "",
+		paidDate: "NOT PAID",
 		pending: "YES",
 		completed: "NO",
 	});
 
 	useEffect(() => {
-		// Generate a random number for the "invoice" field when the component mounts
 		const randomInvoiceNumber = Math.floor(Math.random() * 1000000);
 		setFormData({
 			...formData,
 			invoice: randomInvoiceNumber.toString(),
 		});
-	}, []); // Empty dependency array ensures this effect runs only once when the component mounts
+	}, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -32,7 +31,7 @@ const AddNewPaymentComponent = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
+		alert("Working on it. Please chack back again!!");
 		// You can handle form submission here
 		console.log(formData);
 	};
@@ -41,7 +40,7 @@ const AddNewPaymentComponent = () => {
 		<article className="AddNewPayment mt-3">
 			<div className="container fw-bold ">
 				<div className="row  align-items-center justify-content-center">
-					<div className="col-md-8">
+					<div className="col-md-8 col-auto">
 						<h1 className="text-primary  ">Add New Payment</h1> <hr />
 						<form onSubmit={handleSubmit}>
 							<div className="form-group">
@@ -81,9 +80,14 @@ const AddNewPaymentComponent = () => {
 									placeholder="Select type"
 								>
 									<option value="Visa">Visa</option>
-									<option value="Mastercard">Mastercard</option>
-									<option value="Paypal">Paypal</option>
-									<option value="Cash">Cash</option>
+									<option value="americanexpress">American Express</option>
+									<option value="mastercard">Master Card</option>
+									<option value="paypal">Paypal</option>
+									<option value="cash">Cash</option>
+									<option value="applepay">Apple Pay</option>
+									<option value="banktransfer">Bank Transfer</option>
+									<option value="bitcoin">Bitcoin</option>
+									<option value="other">Other</option>
 								</select>
 							</div>
 
