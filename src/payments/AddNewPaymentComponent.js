@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const AddNewPaymentComponent = () => {
 	const [formData, setFormData] = useState({
-		invoice: "",
+		invoice: "", // Initialize as an empty string
 		amount: "",
-		type: "",
+		type: "Visa",
 		payer: "",
 		payee: "",
 		dueDate: "",
 		paidDate: "",
-		pending: "YES", // Default value for select
-		completed: "NO", // Default value for select
+		pending: "YES",
+		completed: "NO",
 	});
+
+	useEffect(() => {
+		// Generate a random number for the "invoice" field when the component mounts
+		const randomInvoiceNumber = Math.floor(Math.random() * 1000000);
+		setFormData({
+			...formData,
+			invoice: randomInvoiceNumber.toString(),
+		});
+	}, []); // Empty dependency array ensures this effect runs only once when the component mounts
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -24,18 +33,10 @@ const AddNewPaymentComponent = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// Generate a random number for the "invoice" field
-		const randomInvoiceNumber = Math.floor(Math.random() * 100000000);
-
-		// Update the formData with the random invoice number
-		setFormData({
-			...formData,
-			invoice: randomInvoiceNumber.toString(), // Convert to string
-		});
-		alert("working on it!!!");
 		// You can handle form submission here
 		console.log(formData);
 	};
+
 	return (
 		<article className="AddNewPayment mt-3">
 			<div className="container fw-bold ">
@@ -117,7 +118,7 @@ const AddNewPaymentComponent = () => {
 									onChange={handleChange}
 								/>
 							</div>
-							<div className="form-group">
+							<div className="form-group d-none">
 								<label htmlFor="paidDate">Paid Date</label>
 								<input
 									type="date"
