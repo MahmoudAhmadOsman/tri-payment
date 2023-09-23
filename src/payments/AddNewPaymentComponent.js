@@ -66,6 +66,7 @@ const AddNewPaymentComponent = () => {
 									name="amount"
 									value={formData.amount}
 									onChange={handleChange}
+									placeholder="0.00"
 								/>
 							</div>
 
@@ -77,6 +78,7 @@ const AddNewPaymentComponent = () => {
 									name="type"
 									value={formData.type}
 									onChange={handleChange}
+									placeholder="Select type"
 								>
 									<option value="Visa">Visa</option>
 									<option value="Mastercard">Mastercard</option>
@@ -94,6 +96,7 @@ const AddNewPaymentComponent = () => {
 									name="payer"
 									value={formData.payer}
 									onChange={handleChange}
+									placeholder="Enter payer name"
 								/>
 							</div>
 							<div className="form-group">
@@ -105,6 +108,7 @@ const AddNewPaymentComponent = () => {
 									name="payee"
 									value={formData.payee}
 									onChange={handleChange}
+									placeholder="Enter payee name"
 								/>
 							</div>
 							<div className="form-group">
@@ -138,6 +142,9 @@ const AddNewPaymentComponent = () => {
 									value={formData.pending}
 									onChange={handleChange}
 								>
+									<option disabled defaultValue>
+										Select one
+									</option>
 									<option value="YES">YES</option>
 									<option value="NO">NO</option>
 								</select>
@@ -151,6 +158,9 @@ const AddNewPaymentComponent = () => {
 									value={formData.completed}
 									onChange={handleChange}
 								>
+									<option disabled defaultValue>
+										Select one
+									</option>
 									<option value="YES">YES</option>
 									<option value="NO">NO</option>
 								</select>
