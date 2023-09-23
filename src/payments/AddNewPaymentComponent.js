@@ -71,7 +71,7 @@ const AddNewPaymentComponent = () => {
 							<div className="form-group">
 								<label htmlFor="type">Type</label>
 								<select
-									className="form-control form-control-lg"
+									className="form-select form-control form-control-lg"
 									id="type"
 									name="type"
 									value={formData.type}
