@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const AddNewPaymentComponent = () => {
+	const [workingOnIt, setWorkingOnIt] = useState(false);
 	const [formData, setFormData] = useState({
 		invoice: "",
 		amount: "",
@@ -31,16 +32,27 @@ const AddNewPaymentComponent = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		alert("Working on it. Please chack back again!!");
-		// You can handle form submission here
+		setWorkingOnIt(true);
+
+		setTimeout(() => {
+			setWorkingOnIt(false);
+		}, 4000);
+
 		console.log(formData);
 	};
 
 	return (
 		<article className="AddNewPayment mt-3">
-			<div className="container fw-bold ">
+			<div className="container ">
 				<div className="row  align-items-center justify-content-center">
 					<div className="col-md-8 col-auto">
+						{workingOnIt ? (
+							<h3 className="text-danger">
+								Working on it. Please check back again!
+							</h3>
+						) : (
+							""
+						)}
 						<h1 className="text-primary  ">Add New Payment</h1> <hr />
 						<form onSubmit={handleSubmit}>
 							<div className="form-group">
