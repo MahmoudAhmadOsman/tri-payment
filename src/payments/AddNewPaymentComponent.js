@@ -156,7 +156,7 @@ const AddNewPaymentComponent = () => {
 							</div>
 							<button
 								type="submit"
-								className="btn btn-outline-primary btn-lg mt-4"
+								className="btn btn-outline-primary btn-lg mt-2"
 							>
 								Submit
 							</button>
