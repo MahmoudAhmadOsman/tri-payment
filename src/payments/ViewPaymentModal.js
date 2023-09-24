@@ -97,13 +97,13 @@ const ViewPaymentModal = ({
 									{selectedPayment.completed === "1" &&
 									selectedPayment.pending !== "1" ? (
 										<>
-											<h5 className="text-success">
+											<h6 className="text-success">
 												Payment is made on: <b>{selectedPayment.paidDate}</b>.
-											</h5>
-											<span className="text-muted">
+											</h6>
+											<small className="text-muted">
 												{" "}
 												Thank you for submitting your payment.
-											</span>
+											</small>
 										</>
 									) : (
 										<span className="text-danger fw-bold">
