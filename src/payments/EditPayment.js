@@ -139,7 +139,7 @@ const EditPayment = () => {
 							<div className="col-md-4">
 								<div className="input-group mb-3">
 									<span htmlFor="amount" className="input-group-text">
-										Amount
+										Total Amount
 									</span>
 									<input
 										type="text"
@@ -154,7 +154,7 @@ const EditPayment = () => {
 
 								<div className="input-group mb-3">
 									<span htmlFor="payer" className="input-group-text">
-										Payer
+										Payer Name
 									</span>
 
 									<input
@@ -170,7 +170,7 @@ const EditPayment = () => {
 
 								<div className="input-group mb-3">
 									<span htmlFor="payee" className="input-group-text">
-										Payee
+										Payee Name
 									</span>
 									<input
 										type="text"
@@ -237,7 +237,7 @@ const EditPayment = () => {
 									</option>
 
 									<option value={type}>{Capitalize(type)}</option>
-									<option value="Visa">Visa</option>
+									<option value="visa">Visa</option>
 									<option value="americanexpress">American Express</option>
 									<option value="mastercard">Master Card</option>
 									<option value="paypal">Paypal</option>
