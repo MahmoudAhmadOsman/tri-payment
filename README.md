@@ -20,4 +20,4 @@ Payment Update
 ![Payment Update Design](https://github.com/MahmoudAhmadOsman/tri-payment/blob/master/public/assets/images/payment-edit.png)
 
 Payment Form
-![Payment Form Design](https://github.com/MahmoudAhmadOsman/tri-payment/blob/master/public/assets/images/payment-form.png)
+![Payment Form Design](https://github.com/MahmoudAhmadOsman/tri-payment/blob/master/public/assets/images/new-payment-form.png)
