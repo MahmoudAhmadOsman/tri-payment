@@ -31,7 +31,7 @@ const AddNewPaymentComponent = () => {
 	} = formData;
 
 	useEffect(() => {
-		const randomInvoiceNumber = Math.floor(Math.random() * 1000000);
+		const randomInvoiceNumber = Math.floor(Math.random() * 10000000000);
 		setFormData({
 			...formData,
 			invoice: randomInvoiceNumber.toString(),
