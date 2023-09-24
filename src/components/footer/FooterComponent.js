@@ -27,10 +27,7 @@ const FooterComponent = () => {
 					>
 						<i className="fa fa-linkedin" />
 					</Link>
-					<Link
-						to="https://github.com/MahmoudAhmadOsman"
-						className="me-4 text-reset"
-					>
+					<Link to="/#" className="me-4 text-reset">
 						<i className="fa fa-github" />
 					</Link>
 				</div>
