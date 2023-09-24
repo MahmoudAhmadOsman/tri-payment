@@ -233,7 +233,10 @@ const PaymentListComponent = () => {
 										<tbody>
 											{payments.map((payment, id) => (
 												<tr key={payment.id}>
-													<td>{payment.invoice}</td>
+													<td>
+														<i className="fa fa-star-o"></i> &nbsp;
+														{payment.invoice}
+													</td>
 													<td>
 														$
 														{parseFloat(payment.amount)
