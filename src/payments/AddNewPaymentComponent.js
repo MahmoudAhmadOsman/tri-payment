@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PaymentService from "../service/PaymentService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const AddNewPaymentComponent = () => {
@@ -245,7 +245,7 @@ const AddNewPaymentComponent = () => {
 									)}
 								</select>
 							</div>
-							<div className="form-group">
+							<div className="form- mb-3">
 								<label htmlFor="completed">Completed</label>
 								<select
 									className="form-select form-control form-control-lg"
@@ -268,12 +268,20 @@ const AddNewPaymentComponent = () => {
 									""
 								)}
 							</div>
-							<button
-								type="submit"
-								className="btn btn-outline-primary fw-bold btn-lg mt-2"
-							>
-								Submit
-							</button>
+							<div className="button-group mb-2">
+								<button
+									type="submit"
+									className="btn btn-outline-primary fw-bold btn-lg me-2"
+								>
+									SUBMIT
+								</button>
+								<Link
+									to="/payments/payment-actions"
+									className="btn btn-outline-danger fw-bold btn-lg"
+								>
+									CANCEL
+								</Link>
+							</div>
 						</form>{" "}
 					</div>
 				</div>

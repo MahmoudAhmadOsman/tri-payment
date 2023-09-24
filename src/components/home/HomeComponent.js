@@ -109,7 +109,7 @@ const HomeComponent = () => {
 						<div className="card">
 							<img src={images[3]} alt="Card Image" className="card-img-top" />
 							<div className="card-body">
-								<h2 className="card-title">Currency Conversion Made Easy</h2>
+								<h4 className="card-title">Currency Conversion Made Easy</h4>
 								<p className="card-text">
 									Explore hassle-free currency exchange services that provide
 									real-time rates and user-friendly tools for travelers and
@@ -125,9 +125,9 @@ const HomeComponent = () => {
 							<img src={images[1]} alt="Card Image" className="card-img-top" />
 
 							<div className="card-body">
-								<h2 className="card-title">
+								<h4 className="card-title">
 									Foreign Exchange for International Commerce
-								</h2>
+								</h4>
 								<p className="card-text">
 									Unlock global business opportunities with our international
 									currency exchange solutions. Simplify cross-border
@@ -143,9 +143,9 @@ const HomeComponent = () => {
 							<img src={images[2]} alt="Card Image" className="card-img-top" />
 
 							<div className="card-body">
-								<h2 className="card-title">
+								<h4 className="card-title">
 									Travel Smart: Get More Bang for Your Buck
-								</h2>
+								</h4>
 								<p className="card-text">
 									Planning your next vacation? Discover tips and tricks for
 									maximizing your travel budget. Learn about favorable exchange
@@ -161,9 +161,7 @@ const HomeComponent = () => {
 							<img src={images[0]} alt="Card Image" className="card-img-top" />
 
 							<div className="card-body">
-								<h2 className="card-title">
-									Cryptocurrency Revolution: Investing in the Digital Age
-								</h2>
+								<h4 className="card-title">Investing in the Digital Age</h4>
 								<p className="card-text">
 									Dive into the world of digital assets and blockchain
 									technology. Explore the potential of cryptocurrencies as an
