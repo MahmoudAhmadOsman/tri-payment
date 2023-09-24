@@ -227,7 +227,6 @@ const PaymentListComponent = () => {
 												<th>Payer</th>
 												<th>Payee</th>
 												<th>Due Date</th>
-												{/* <th>Paid Date</th> */}
 												<th>Actions</th>
 											</tr>
 										</thead>
@@ -237,36 +236,18 @@ const PaymentListComponent = () => {
 													<td>{payment.invoice}</td>
 													<td>
 														$
-														{/* {payment.amount.toLocaleString("en-US", {
-															minimumFractionDigits: 2,
-														})} */}
-														{new Intl.NumberFormat()
-															.format(payment.amount)
+														{parseFloat(payment.amount)
+															.toFixed(2)
 															.toLocaleString("en-US", {
 																minimumFractionDigits: 2,
 																maximumFractionDigits: 2,
-																style: "currency",
-																currency: "USD",
+																// style: "currency",
+																// currency: "USD",
 															})}
 													</td>
 													<td>{payment.payer}</td>
 													<td>{payment.payee}</td>
 													<td>{formatDate(payment.dueDate)}</td>
-													{/* <td>
-														
-														{formatDate(ensureDateInPast(payment.paidDate))}
-														{payment.completed === "1" &&
-														payment.pending !== "1" ? (
-															<p
-																className="text-success"
-																style={{ fontSize: "9px" }}
-															>
-																Thank for payment{" "}
-															</p>
-														) : (
-															""
-														)}
-													</td> */}
 
 													<td className="d-flex justify-content-between">
 														<button
