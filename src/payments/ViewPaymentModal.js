@@ -1,6 +1,5 @@
 import React from "react";
-import numeral from "numeral";
-import accounting from "accounting";
+import { Link, useNavigate } from "react-router-dom";
 
 const ViewPaymentModal = ({
 	selectedPayment,
@@ -8,6 +7,13 @@ const ViewPaymentModal = ({
 	Capitalize,
 	formatDate,
 }) => {
+	const history = useNavigate();
+
+	const handleEditClick = () => {
+		history(`/payments/view-payment/${selectedPayment.id}`);
+		window.location.reload();
+	};
+
 	return (
 		<div
 			className="modal fade"
@@ -53,11 +59,14 @@ const ViewPaymentModal = ({
 															// currency: "USD",
 														})}
 												</td>
+
 												<i
-													className={`fa fa-3x ${getPaymentTypeIcon(
+													className={`fa fa-3x  ${getPaymentTypeIcon(
 														selectedPayment.type
 													)}`}
+													style={{ width: "100%" }}
 												></i>
+
 												<td>
 													{selectedPayment.paidDate ? (
 														<span>{selectedPayment.paidDate}</span>
@@ -108,6 +117,14 @@ const ViewPaymentModal = ({
 						)}
 					</div>
 					<div className="modal-footer">
+						<div className="float-start">
+							<button
+								onClick={handleEditClick}
+								className="btn btn-outline-primary btn-sm"
+							>
+								Edit Payment Record
+							</button>
+						</div>
 						<button
 							type="button"
 							className="btn btn-outline-danger btn-sm"

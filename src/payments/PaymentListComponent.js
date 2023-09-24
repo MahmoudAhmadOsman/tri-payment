@@ -11,7 +11,7 @@ const PaymentListComponent = () => {
 	const [payments, setPayments] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const [selectedPayment, setSelectedPayment] = useState(null);
+	const [selectedPayment, setSelectedPayment] = useState("");
 	const [unableToDelete, setUnableToDelete] = useState(false);
 
 	// Initialize state for selectedWeek
