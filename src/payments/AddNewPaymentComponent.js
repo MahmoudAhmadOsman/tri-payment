@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PaymentService from "../service/PaymentService";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "./PaymentStyle.css";
 
 const AddNewPaymentComponent = () => {
 	const [error, setError] = useState(false);
@@ -97,11 +98,11 @@ const AddNewPaymentComponent = () => {
 	};
 
 	return (
-		<article className="AddNewPayment mt-3">
-			<div className="container ">
+		<article className="add_new_payment mt-3">
+			<div className="container fw-bold">
 				<div className="row  align-items-center justify-content-center">
 					<div className="col-md-8 col-auto">
-						<h2 className="text-primary  ">Add New Payment</h2> <hr />
+						<h2 className="text-primary">Add New Payment</h2> <hr />
 						<form onSubmit={handleSubmit}>
 							<div className="form-group">
 								<label htmlFor="invoice" className="d-none">

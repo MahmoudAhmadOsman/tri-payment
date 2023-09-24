@@ -8,3 +8,11 @@
 	padding: 25px;
 	margin-bottom: 20px;
 }
+
+/* Add New Payment Style */
+.add_new_payment {
+	position: relative;
+}
+.add_new_payment input::placeholder {
+	font-size: 12px;
+}
