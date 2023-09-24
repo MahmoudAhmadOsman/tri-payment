@@ -133,7 +133,7 @@ const EditPayment = () => {
 				</div>
 			) : (
 				<React.Fragment>
-					<h2 className="text-muted mt-2">Edit Payment</h2> <hr />
+					<h2 className="text-primary mt-2">Edit Payment</h2> <hr />
 					<form action="">
 						<div className="row">
 							<div className="col-md-4">
