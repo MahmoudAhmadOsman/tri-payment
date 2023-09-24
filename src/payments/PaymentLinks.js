@@ -6,7 +6,7 @@ const PaymentLinks = () => {
 	return (
 		<div className="payment-links">
 			<div className="container mt-4">
-				<h1 className="text-primary">Payment Options</h1>
+				<h2 className="text-primary">Payment Options</h2>
 				<hr />
 				<p className="lead">Please select the option you'd like to perform.</p>
 				<div className="row">

@@ -101,7 +101,7 @@ const AddNewPaymentComponent = () => {
 			<div className="container ">
 				<div className="row  align-items-center justify-content-center">
 					<div className="col-md-8 col-auto">
-						<h1 className="text-primary  ">Add New Payment</h1> <hr />
+						<h2 className="text-primary  ">Add New Payment</h2> <hr />
 						<form onSubmit={handleSubmit}>
 							<div className="form-group">
 								<label htmlFor="invoice" className="d-none">
