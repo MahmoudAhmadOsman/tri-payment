@@ -4,7 +4,7 @@ import "./FooterStyle.css";
 
 const FooterComponent = () => {
 	return (
-		<section className="footer text-lg-start text-white">
+		<section className="footer text-muted text-lg-start">
 			{/* Section: Social media */}
 			<div className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 				{/* Left */}
