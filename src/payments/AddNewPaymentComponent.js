@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import PaymentService from "../service/PaymentService";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddNewPaymentComponent = () => {
-	const [workingOnIt, setWorkingOnIt] = useState(false);
+	const [error, setError] = useState(false);
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		invoice: "",
 		amount: "",
@@ -13,6 +17,18 @@ const AddNewPaymentComponent = () => {
 		pending: "YES",
 		completed: "NO",
 	});
+
+	const {
+		invoice,
+		amount,
+		type,
+		payer,
+		payee,
+		dueDate,
+		paidDate,
+		pending,
+		completed,
+	} = formData;
 
 	useEffect(() => {
 		const randomInvoiceNumber = Math.floor(Math.random() * 1000000);
@@ -30,15 +46,54 @@ const AddNewPaymentComponent = () => {
 		});
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setWorkingOnIt(true);
+		if (
+			amount === "" ||
+			type === "" ||
+			payer === "" ||
+			payee === "" ||
+			dueDate === "" ||
+			pending === "" ||
+			completed === ""
+		) {
+			setError(true);
+		} else {
+			await PaymentService.savePayment(formData)
+				.then((res) => {
+					setFormData(res.data);
+					// setFormData({
+					// 	invoice: "",
+					// 	amount: "",
+					// 	type: "",
+					// 	payer: "",
+					// 	payee: "",
+					// 	dueDate: "",
+					// 	pending: "YES",
+					// 	completed: "NO",
+					// });
 
-		setTimeout(() => {
-			setWorkingOnIt(false);
-		}, 4000);
-
-		console.log(formData);
+					// console.log(res.data);
+					toast.success("Payment added successfully!", {
+						position: "top-right",
+						autoClose: 5000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+					});
+					navigate("/payments");
+				})
+				.catch((error) => {
+					toast.success("Something went wrong!", {
+						position: "top-right",
+						autoClose: 5000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+					});
+					console.log(error.message);
+				});
+		}
 	};
 
 	return (
@@ -46,13 +101,6 @@ const AddNewPaymentComponent = () => {
 			<div className="container ">
 				<div className="row  align-items-center justify-content-center">
 					<div className="col-md-8 col-auto">
-						{workingOnIt ? (
-							<h3 className="text-danger">
-								Working on it. Please check back again!
-							</h3>
-						) : (
-							""
-						)}
 						<h1 className="text-primary  ">Add New Payment</h1> <hr />
 						<form onSubmit={handleSubmit}>
 							<div className="form-group">
@@ -71,7 +119,7 @@ const AddNewPaymentComponent = () => {
 							<div className="form-group">
 								<label htmlFor="amount">Amount</label>
 								<input
-									type="text"
+									type="number"
 									className="form-control form-control-lg"
 									id="amount"
 									name="amount"
@@ -79,6 +127,11 @@ const AddNewPaymentComponent = () => {
 									onChange={handleChange}
 									placeholder="0.00"
 								/>
+								{error && amount.length <= 0 ? (
+									<span className="text-danger">Amount is required!</span>
+								) : (
+									""
+								)}
 							</div>
 
 							<div className="form-group">
@@ -101,6 +154,11 @@ const AddNewPaymentComponent = () => {
 									<option value="bitcoin">Bitcoin</option>
 									<option value="other">Other</option>
 								</select>
+								{error && type.length <= 0 ? (
+									<span className="text-danger">Payment type is required!</span>
+								) : (
+									""
+								)}
 							</div>
 
 							<div className="form-group">
@@ -114,6 +172,11 @@ const AddNewPaymentComponent = () => {
 									onChange={handleChange}
 									placeholder="Enter payer name"
 								/>
+								{error && payer.length <= 0 ? (
+									<span className="text-danger">Payer name is required!</span>
+								) : (
+									""
+								)}
 							</div>
 							<div className="form-group">
 								<label htmlFor="payee">Payee</label>
@@ -126,6 +189,11 @@ const AddNewPaymentComponent = () => {
 									onChange={handleChange}
 									placeholder="Enter payee name"
 								/>
+								{error && payee.length <= 0 ? (
+									<span className="text-danger">Payee name is required!</span>
+								) : (
+									""
+								)}
 							</div>
 							<div className="form-group">
 								<label htmlFor="dueDate">Due Date</label>
@@ -137,6 +205,11 @@ const AddNewPaymentComponent = () => {
 									value={formData.dueDate}
 									onChange={handleChange}
 								/>
+								{error && dueDate.length <= 0 ? (
+									<span className="text-danger">Due Date is required!</span>
+								) : (
+									""
+								)}
 							</div>
 							<div className="form-group d-none">
 								<label htmlFor="paidDate">Paid Date</label>
@@ -163,6 +236,13 @@ const AddNewPaymentComponent = () => {
 									</option>
 									<option value="YES">YES</option>
 									<option value="NO">NO</option>
+									{error && pending.length <= 0 ? (
+										<span className="text-danger">
+											Pending status is required!
+										</span>
+									) : (
+										""
+									)}
 								</select>
 							</div>
 							<div className="form-group">
@@ -180,6 +260,13 @@ const AddNewPaymentComponent = () => {
 									<option value="YES">YES</option>
 									<option value="NO">NO</option>
 								</select>
+								{error && completed.length <= 0 ? (
+									<span className="text-danger">
+										Completed status is required!
+									</span>
+								) : (
+									""
+								)}
 							</div>
 							<button
 								type="submit"

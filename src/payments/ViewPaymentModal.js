@@ -27,12 +27,13 @@ const ViewPaymentModal = ({
 						{selectedPayment ? (
 							<React.Fragment>
 								<div className="table-responsive" style={{ fontSize: "12px" }}>
-									<table className="table table-striped table-bordered table-hover">
+									<table className="table table-striped table-bordered">
 										<thead>
 											<tr>
 												<th>Invoice #</th>
 												<th>Amount</th>
-												<th>Method Type</th>
+												<th>Payment Method Type</th>
+												<th>Paid Date</th>
 												<th>Pending</th>
 												<th>Completed</th>
 											</tr>
@@ -66,6 +67,13 @@ const ViewPaymentModal = ({
 														selectedPayment.type
 													)}`}
 												></i>
+												<td>
+													{selectedPayment.paidDate ? (
+														<span>{selectedPayment.paidDate}</span>
+													) : (
+														"NOT PAID"
+													)}
+												</td>
 
 												<td>
 													{selectedPayment.pending === "1" ? "YES" : "NO"}

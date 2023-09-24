@@ -166,8 +166,8 @@ const PaymentListComponent = () => {
 						)}
 						<h3 className="mt-3">Weekly Payment Options</h3> <hr />
 						{/* Start of row 1 */}
-						<div className="row">
-							<div className="col-sm-4 mb-3">
+						<div className="row mb-4 text-dark">
+							<div className="col-md-4 mb-3">
 								<div className="form-group">
 									<label htmlFor="weekSelect">Select a Week</label>
 									<select
@@ -189,7 +189,7 @@ const PaymentListComponent = () => {
 									</select>
 								</div>
 							</div>
-							<div className="col-md-7">
+							<div className="col-md-4 mb-4">
 								<h6>See data in chart</h6>
 								<Link
 									to="/payments/payment-chart"
@@ -198,12 +198,21 @@ const PaymentListComponent = () => {
 									See data
 								</Link>
 							</div>
+							<div className="col-md-4">
+								<h6>Add new payment record</h6>
+								<Link
+									to="/payments/add-new-payment"
+									className="btn btn-outline-primary"
+								>
+									Add New Payment Record
+								</Link>
+							</div>
 						</div>
 						{/* End of row 1 */}
 						<div className="row">
 							<div className="col-sm-12">
 								<div className="table-responsive">
-									<table className="table table-striped table-bordered table-hover">
+									<table className="table table-striped table-bordered">
 										<thead>
 											<tr>
 												<th>Invoice #</th>
@@ -211,7 +220,7 @@ const PaymentListComponent = () => {
 												<th>Payer</th>
 												<th>Payee</th>
 												<th>Due Date</th>
-												<th>Paid Date</th>
+												{/* <th>Paid Date</th> */}
 												<th>Actions</th>
 											</tr>
 										</thead>
@@ -236,7 +245,7 @@ const PaymentListComponent = () => {
 													<td>{payment.payer}</td>
 													<td>{payment.payee}</td>
 													<td>{formatDate(payment.dueDate)}</td>
-													<td>
+													{/* <td>
 														{formatDate(ensureDateInPast(payment.paidDate))}
 														{payment.completed === "1" &&
 														payment.pending !== "1" ? (
@@ -249,7 +258,7 @@ const PaymentListComponent = () => {
 														) : (
 															""
 														)}
-													</td>
+													</td> */}
 
 													<td className="d-flex justify-content-between">
 														<button
