@@ -4,7 +4,7 @@ import "./FooterStyle.css";
 
 const FooterComponent = () => {
 	return (
-		<section className="footer text-center text-lg-starttext-white">
+		<section className="footer text-lg-start text-white">
 			{/* Section: Social media */}
 			<div className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 				{/* Left */}
@@ -47,7 +47,7 @@ const FooterComponent = () => {
 								TRI-PAYMENT SYSTEMS, INC.
 							</h6>
 							<p>
-								Mahmoud Osman, a seasoned fusoftware engineer with extensive
+								Mahmoud Osman, a seasoned software engineer with extensive
 								experience in the field, has spearheaded the development of this
 								project.
 							</p>
