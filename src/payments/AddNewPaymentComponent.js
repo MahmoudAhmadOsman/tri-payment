@@ -85,7 +85,7 @@ const AddNewPaymentComponent = () => {
 					navigate("/payments");
 				})
 				.catch((error) => {
-					toast.success("Something went wrong!", {
+					toast.error("Something went wrong!", {
 						position: "top-right",
 						autoClose: 5000,
 						hideProgressBar: false,
