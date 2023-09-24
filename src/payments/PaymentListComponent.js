@@ -95,6 +95,13 @@ const PaymentListComponent = () => {
 			})
 			.catch((error) => {
 				setError(true);
+				toast.success("Something went wrong!", {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+				});
 				console.error(error.message);
 			});
 	};

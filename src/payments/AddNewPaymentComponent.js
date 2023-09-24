@@ -74,7 +74,7 @@ const AddNewPaymentComponent = () => {
 					// });
 
 					// console.log(res.data);
-					toast.success("Payment added successfully!", {
+					toast.success("New payment record added successfully!", {
 						position: "top-right",
 						autoClose: 5000,
 						hideProgressBar: false,
