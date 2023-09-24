@@ -44,22 +44,13 @@ const ViewPaymentModal = ({
 												<td>{selectedPayment.invoice}</td>
 												<td>
 													$
-													{/* {selectedPayment.amount.toLocaleString("en-US", {
-														minimumFractionDigits: 2,
-														style: "currency",
-														currency: "USD",
-													})} */}
-													{/* {new Intl.NumberFormat().format(
-														selectedPayment.amount,
-														
-													)} */}
-													{new Intl.NumberFormat()
-														.format(selectedPayment.amount)
+													{parseFloat(selectedPayment.amount)
+														.toFixed(2)
 														.toLocaleString("en-US", {
-															style: "currency",
-															currency: "USD",
 															minimumFractionDigits: 2,
 															maximumFractionDigits: 2,
+															// style: "currency",
+															// currency: "USD",
 														})}
 												</td>
 												<i
