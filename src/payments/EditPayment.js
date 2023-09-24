@@ -182,7 +182,7 @@ const EditPayment = () => {
 								</div>
 							</div>
 							<div className="col-md-4">
-								<h5>Payment Status</h5>
+								<h5 className="text-muted">Payment Status</h5>
 								<label htmlFor="pending">
 									Pendig Status?: &nbsp; {pending === "1" ? "YES" : "NO"}
 								</label>
