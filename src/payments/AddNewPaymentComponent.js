@@ -144,7 +144,7 @@ const AddNewPaymentComponent = () => {
 									onChange={handleChange}
 									placeholder="Select type"
 								>
-									<option value="Visa">Visa</option>
+									<option value="visa">Visa</option>
 									<option value="americanexpress">American Express</option>
 									<option value="mastercard">Master Card</option>
 									<option value="paypal">Paypal</option>
