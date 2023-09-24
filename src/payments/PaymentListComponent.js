@@ -253,6 +253,7 @@ const PaymentListComponent = () => {
 													<td>{payment.payee}</td>
 													<td>{formatDate(payment.dueDate)}</td>
 													{/* <td>
+														
 														{formatDate(ensureDateInPast(payment.paidDate))}
 														{payment.completed === "1" &&
 														payment.pending !== "1" ? (

@@ -94,10 +94,22 @@ const ViewPaymentModal = ({
 								</div>{" "}
 								<hr />
 								<p>
-									<b>Due Date:</b>{" "}
-									<i className="text-danger">
-										{formatDate(selectedPayment.dueDate)}
-									</i>{" "}
+									{selectedPayment.completed === "1" &&
+									selectedPayment.pending !== "1" ? (
+										<>
+											<h4 className="text-primary">
+												Payment is paid on: <b>{selectedPayment.paidDate}</b>.
+											</h4>
+											<span className="text-success">
+												{" "}
+												Thank for making your payment
+											</span>
+										</>
+									) : (
+										<span className="text-danger fw-bold">
+											Due Date: {formatDate(selectedPayment.dueDate)}
+										</span>
+									)}
 								</p>
 							</React.Fragment>
 						) : (
