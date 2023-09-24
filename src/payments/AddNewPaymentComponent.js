@@ -224,7 +224,7 @@ const AddNewPaymentComponent = () => {
 								/>
 							</div>
 							<div className="form-group">
-								<label htmlFor="pending">Pending</label>
+								<label htmlFor="pending">Pending?</label>
 								<select
 									className="form-select form-control form-control-lg"
 									id="pending"
@@ -247,7 +247,7 @@ const AddNewPaymentComponent = () => {
 								</select>
 							</div>
 							<div className="form- mb-3">
-								<label htmlFor="completed">Completed</label>
+								<label htmlFor="completed">Completed?</label>
 								<select
 									className="form-select form-control form-control-lg"
 									id="completed"
