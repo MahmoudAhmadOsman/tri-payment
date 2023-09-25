@@ -9,13 +9,19 @@ const SignIn = () => {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	// const auth = getAuth();
+	const [error, setError] = useState(false);
 	const navigate = useNavigate();
 
-	const signIn = (e) => {
+	const signIn = async (e) => {
 		e.preventDefault();
 
-		signInWithEmailAndPassword(auth, email, password)
+		if (email === "" || password === "") {
+			setError(true);
+		} else {
+			setError(false);
+		}
+
+		await signInWithEmailAndPassword(auth, email, password)
 			.then((useCredentials) => {
 				navigate("/dashboard");
 				console.log(useCredentials.user);
@@ -51,6 +57,14 @@ const SignIn = () => {
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
 										/>
+
+										{error && email.length <= 0 ? (
+											<span className="text-danger">
+												Email address is required!
+											</span>
+										) : (
+											""
+										)}
 									</div>
 									<div className="form-group mb-3">
 										<label htmlFor="password">Password</label>
@@ -62,6 +76,11 @@ const SignIn = () => {
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 										/>
+										{error && password.length <= 0 ? (
+											<span className="text-danger">Password is required!</span>
+										) : (
+											""
+										)}
 									</div>
 									<div className="form-group mb-1">
 										<button

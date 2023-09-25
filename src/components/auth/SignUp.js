@@ -7,19 +7,25 @@ const SignUp = () => {
 	const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [error, setError] = useState(false);
+
 	const navigate = useNavigate();
 
 	const signUp = (e) => {
 		e.preventDefault();
-		createUserWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				navigate("/auth/sign-in");
 
-				console.log(userCredential);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		if (fullName === "" || email === "" || password === "") {
+			setError(true);
+		} else {
+			createUserWithEmailAndPassword(auth, email, password)
+				.then((userCredential) => {
+					navigate("/auth/sign-in");
+					console.log(userCredential);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	};
 
 	return (
@@ -27,11 +33,11 @@ const SignUp = () => {
 			<div className="container mt-3">
 				<div className="row justify-content-center">
 					<div className="col-md-4">
-						<div className="wrap bg-success shadow-lg p-3 mb-5 bg-body rounded">
+						<div className="wrap bg-success shadow-lg mb-5 bg-body rounded">
 							<div className="login-wraps p-4 p-md-5">
 								<div className="d-flex">
-									<div className="w-100">
-										<h3 className="mb-2">Create An Account</h3>
+									<div>
+										<h4 className="mb-2">Create An Account</h4>
 										<p>Please fill out the required fields below.</p>
 									</div>
 								</div>
@@ -51,6 +57,13 @@ const SignUp = () => {
 											value={fullName}
 											onChange={(e) => setFullName(e.target.value)}
 										/>
+										{error && fullName.length <= 0 ? (
+											<span className="text-danger">
+												Full name is required!
+											</span>
+										) : (
+											""
+										)}
 									</div>
 									<div className="form-group mb-3">
 										<label className="form-control-placeholder" htmlFor="email">
@@ -64,6 +77,13 @@ const SignUp = () => {
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
 										/>
+										{error && email.length <= 0 ? (
+											<span className="text-danger">
+												Email address is required!
+											</span>
+										) : (
+											""
+										)}
 									</div>
 									<div className="form-group mb-3">
 										<label htmlFor="password">Password</label>
@@ -75,6 +95,14 @@ const SignUp = () => {
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 										/>
+										{error && password.length <= 0 ? (
+											<span className="text-danger">
+												Password is required & must be at least 6 characters
+												long.!
+											</span>
+										) : (
+											""
+										)}
 									</div>
 									<div className="form-group mb-1">
 										<button
