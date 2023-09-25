@@ -13,12 +13,17 @@ import React, { useState } from "react";
 import Loading from "./utils/Loading";
 import AddNewPaymentComponent from "./payments/AddNewPaymentComponent";
 import PaymentLinks from "./payments/PaymentLinks";
-import { LoginComponent } from "./user/LoginComponent";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
+import Dashboard from "./components/Dashboard";
 
 function App() {
 	const [loading, setLoading] = useState(true);
 	const routes = [
-		{ path: "/users/login", element: <LoginComponent /> },
+		// { path: "/users/login", element: <LoginComponent /> },
+		{ path: "/dashboard", element: <Dashboard /> },
+		{ path: "/auth/sign-up", element: <SignUp /> },
+		{ path: "/auth/sign-in", element: <SignIn /> },
 		{ path: "/payments/payment-chart", element: <PaymentChart /> },
 		{ path: "/payments/add-new-payment", element: <AddNewPaymentComponent /> },
 		{ path: "/payments/payment-actions", element: <PaymentLinks /> },

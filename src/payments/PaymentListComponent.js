@@ -111,7 +111,7 @@ const PaymentListComponent = () => {
 		setUnableToDelete(true);
 		setTimeout(() => {
 			setUnableToDelete(false);
-			window.location.href = "/users/login";
+			window.location.href = "/auth/sign-in";
 		}, 2000);
 	};
 
