@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, googleProvider } from "../../firebase";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
@@ -29,6 +29,15 @@ const SignIn = () => {
 			.catch((error) => {
 				console.log(error.message);
 			});
+	};
+
+	const signInWithGoogle = async () => {
+		try {
+			await signInWithPopup(auth, googleProvider);
+			navigate("/dashboard");
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	return (
@@ -82,12 +91,19 @@ const SignIn = () => {
 											""
 										)}
 									</div>
-									<div className="form-group mb-1">
+									<div className="form-group mb-2">
 										<button
 											type="submit"
-											className="btn btn-outline-primary fw-bold btn-lg"
+											className="btn btn-outline-primary fw-bold btn-lg w-100"
 										>
-											Sign In
+											Login
+										</button>
+										<button
+											type="submit"
+											className="btn btn-outline-success fw-bold btn-lg w-100 mt-2"
+											onClick={signInWithGoogle}
+										>
+											Login with Google
 										</button>
 									</div>
 								</form>
