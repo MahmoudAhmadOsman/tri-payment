@@ -76,7 +76,7 @@ const ViewPaymentModal = ({
 												</td>
 
 												<td>
-													{selectedPayment.pending === 1 ? "YES" : selectedPayment.pending === 0 ? "NO" : "Processing"}
+													{selectedPayment.pending === "1" ? "YES" : selectedPayment.pending === "0" ? "NO" : "Processing"}
 
 													
 												</td>
