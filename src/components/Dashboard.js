@@ -25,7 +25,7 @@ const Dashboard = () => {
 
 		setTimeout(() => {
 			navigate("/auth/sign-in");
-		}, 4000);
+		}, 200);
 	};
 
 	return (
