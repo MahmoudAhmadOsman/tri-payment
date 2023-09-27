@@ -131,7 +131,7 @@ const PaymentListComponent = () => {
 		e.preventDefault();
 		await PaymentService.deletePayment(id)
 			.then((res) => {
-				toast.error(`The record ${id} has been deleleted!`, {
+				toast.error(`The record [${id}] was deleted!`, {
 					position: "top-right",
 					autoClose: 5000,
 					hideProgressBar: false,
@@ -269,7 +269,7 @@ const PaymentListComponent = () => {
 																	// .toFixed(2)
 																	.toLocaleString("en-US", {
 																		minimumFractionDigits: 2,
-																		maximumFractionDigits: 2,
+																		// maximumFractionDigits: 2,
 																		style: "currency",
 																		currency: "USD",
 																	})}
