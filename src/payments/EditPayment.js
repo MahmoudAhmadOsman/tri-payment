@@ -197,7 +197,6 @@ const EditPayment = () => {
 										Select one
 									</option>
 
-									
 									<option value={1}>YES</option>
 									<option value={0}>NO</option>
 								</select>
@@ -215,10 +214,9 @@ const EditPayment = () => {
 									<option value="" disabled defaultValue>
 										Select one
 									</option>
-								        
+
 									<option value="0">NO</option>
 									<option value={1}>YES</option>
-									
 								</select>
 								<small className="text-primary">
 									<b>Note: </b>

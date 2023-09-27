@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const NavigationComponent = () => {
 	return (
-		<div className="site_navigation">
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		<div className="site_navigation fw-bold">
+			<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div className="container-fluid">
 					<Link className="navbar-brand text-uppercase" to="/">
 						Tri-Payment
