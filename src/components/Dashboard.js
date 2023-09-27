@@ -56,7 +56,7 @@ const Dashboard = () => {
 			</div>
 		</div>
 	);
-	// return <div>Dashboard</div>;
+
 };
 
 export default Dashboard;

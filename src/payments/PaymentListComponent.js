@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { sort } from "array-sort";
+
 // import data from "../data/data.json";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
@@ -90,12 +92,22 @@ const PaymentListComponent = () => {
 	const getPayments = async () => {
 		await PaymentService.getAllPayments()
 			.then((res) => {
-				setPayments(res.data);
+				const sortedPayments = res.data
+					.map((payment) => ({
+						...payment,
+						invoice: parseFloat(payment.invoice), // Convert to a number
+					}))
+					.sort((a, b) => b.invoice - a.invoice); // Sort in descending order
+
+				setPayments(sortedPayments);
 				setLoading(false);
+
+				// setPayments(res.data);
+				// setLoading(false);
 			})
 			.catch((error) => {
 				setError(true);
-				toast.success("Something went wrong!", {
+				toast.error("Something went wrong!", {
 					position: "top-right",
 					autoClose: 5000,
 					hideProgressBar: false,
