@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 import { auth, googleProvider } from "../../firebase";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
 	const image = "https://source.unsplash.com/1500x1000/?stock-exchange";

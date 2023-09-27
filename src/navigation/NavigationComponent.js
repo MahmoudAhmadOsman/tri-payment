@@ -36,7 +36,16 @@ const NavigationComponent = () => {
 									aria-current="page"
 									to="/payments/payment-actions"
 								>
-									Payments{" "}
+									Payments
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link
+									className="nav-link active"
+									aria-current="page"
+									to="/auth/sign-up"
+								>
+									Sign Up
 								</Link>
 							</li>
 						</ul>
