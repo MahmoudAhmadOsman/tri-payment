@@ -49,14 +49,14 @@ const ViewPaymentModal = ({
 											<tr>
 												<td>{selectedPayment.invoice}</td>
 												<td>
-													$
+													{/* $ */}
 													{parseFloat(selectedPayment.amount)
-														.toFixed(2)
+														// .toFixed(2)
 														.toLocaleString("en-US", {
 															minimumFractionDigits: 2,
 															maximumFractionDigits: 2,
-															// style: "currency",
-															// currency: "USD",
+															style: "currency",
+															currency: "USD",
 														})}
 												</td>
 

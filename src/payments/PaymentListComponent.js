@@ -20,7 +20,7 @@ const PaymentListComponent = () => {
 	const [selectedWeek, setSelectedWeek] = useState("");
 	const currentYear = new Date().getFullYear();
 
-	const userRoleAdmin = "ADMIN1";
+	const userRoleAdmin = "ADMIN";
 	const guestRole = "GUEST";
 
 	//Format paidDate Date
@@ -183,132 +183,150 @@ const PaymentListComponent = () => {
 						) : (
 							""
 						)}
-						<h3 className="mt-3">Weekly Payment Options</h3> <hr />
-						{/* Start of row 1 */}
-						<div className="row mb-4 text-dark">
-							<div className="col-md-4 mb-3">
-								<div className="form-group">
-									<label htmlFor="weekSelect">Select a Week</label>
-									<select
-										className="form-select"
-										id="weekSelect"
-										onChange={handleChange}
-										value={selectedWeek}
+						{payments.length <= 0 ? (
+							<>
+								<h5 className="text-center text-danger">
+									No Payment data available. Please add a payment record. &nbsp;
+									<Link
+										to="/payments/add-new-payment"
+										className="btn btn-outline-primary btn-sm"
 									>
-										<option value="">Select a week</option>
-										{weekOptions.map((weekOption) => (
-											<option
-												key={weekOption.weekNumber}
-												value={weekOption.weekNumber}
+										Add New Payment
+									</Link>
+								</h5>
+							</>
+						) : (
+							<>
+								<h3 className="mt-3">Weekly Payment Options</h3> <hr />
+								{/* Start of row 1 */}
+								<div className="row mb-4 text-dark">
+									<div className="col-md-4 mb-3">
+										<div className="form-group">
+											<label htmlFor="weekSelect">Select a Week</label>
+											<select
+												className="form-select"
+												id="weekSelect"
+												onChange={handleChange}
+												value={selectedWeek}
 											>
-												Week {weekOption.weekNumber} ({weekOption.startDate} -{" "}
-												{weekOption.endDate})
-											</option>
-										))}
-									</select>
+												<option value="">Select a week</option>
+												{weekOptions.map((weekOption) => (
+													<option
+														key={weekOption.weekNumber}
+														value={weekOption.weekNumber}
+													>
+														Week {weekOption.weekNumber} ({weekOption.startDate}{" "}
+														- {weekOption.endDate})
+													</option>
+												))}
+											</select>
+										</div>
+									</div>
+									<div className="col-md-4 mb-4">
+										<h6>See data in chart</h6>
+										<Link
+											to="/payments/payment-chart"
+											className="btn btn-outline-success"
+										>
+											See data
+										</Link>
+									</div>
+									<div className="col-md-4">
+										<h6>Add new payment record</h6>
+										<Link
+											to="/payments/add-new-payment"
+											className="btn btn-outline-primary"
+										>
+											Add New Payment Record
+										</Link>
+									</div>
 								</div>
-							</div>
-							<div className="col-md-4 mb-4">
-								<h6>See data in chart</h6>
-								<Link
-									to="/payments/payment-chart"
-									className="btn btn-outline-success"
-								>
-									See data
-								</Link>
-							</div>
-							<div className="col-md-4">
-								<h6>Add new payment record</h6>
-								<Link
-									to="/payments/add-new-payment"
-									className="btn btn-outline-primary"
-								>
-									Add New Payment Record
-								</Link>
-							</div>
-						</div>
-						{/* End of row 1 */}
-						<div className="row">
-							<div className="col-sm-12">
-								<div className="table-responsive">
-									<table className="table table-striped table-bordered">
-										<thead>
-											<tr>
-												<th>Invoice #</th>
-												<th>Amount</th>
-												<th>Payer</th>
-												<th>Payee</th>
-												<th>Due Date</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-											{payments.map((payment, id) => (
-												<tr key={payment.id}>
-													<td>
-														<i className="fa fa-star-o"></i> &nbsp;
-														{payment.invoice}
-													</td>
-													<td>
-														$
-														{parseFloat(payment.amount)
-															.toFixed(2)
-															.toLocaleString("en-US", {
-																minimumFractionDigits: 2,
-																maximumFractionDigits: 2,
-																// style: "currency",
-																// currency: "USD",
-															})}
-													</td>
-													<td>{payment.payer}</td>
-													<td>{payment.payee}</td>
-													<td>{formatDate(payment.dueDate)}</td>
+								{/* End of row 1 */}
+								<div className="row">
+									<div className="col-sm-12">
+										<div className="table-responsive">
+											<table className="table table-striped table-bordered">
+												<thead>
+													<tr>
+														<th>Invoice #</th>
+														<th>Amount</th>
+														<th>Payer</th>
+														<th>Payee</th>
+														<th>Due Date</th>
+														<th>Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													{payments.map((payment, id) => (
+														<tr key={payment.id}>
+															<td>
+																<i className="fa fa-star-o"></i> &nbsp;
+																{payment.invoice}
+															</td>
+															<td>
+																{/* $ */}
+																{parseFloat(payment.amount)
+																	// .toFixed(2)
+																	.toLocaleString("en-US", {
+																		minimumFractionDigits: 2,
+																		maximumFractionDigits: 2,
+																		style: "currency",
+																		currency: "USD",
+																	})}
+															</td>
+															<td>{payment.payer}</td>
+															<td>{payment.payee}</td>
+															<td>{formatDate(payment.dueDate)}</td>
 
-													<td className="d-flex justify-content-between">
-														<button
-															className="btn btn-outline-warning btn-sm"
-															data-bs-toggle="modal"
-															data-bs-target="#exampleModal"
-															title={`View ${payment.payee} record!`}
-															onClick={() => handleViewClick(payment)}
-														>
-															<i className="fa fa-eye"></i>
-														</button>
+															<td className="d-flex justify-content-between">
+																<button
+																	className="btn btn-outline-warning btn-sm"
+																	data-bs-toggle="modal"
+																	data-bs-target="#exampleModal"
+																	title={`View ${payment.payee} record!`}
+																	onClick={() => handleViewClick(payment)}
+																>
+																	<i className="fa fa-eye"></i>
+																</button>
 
-														<Link
-															to={`/payments/view-payment/${payment.id}`}
-															className="btn btn-outline-success btn-sm"
-															title={`Update ${payment.payee} record!`}
-														>
-															<i className="fa fa-pencil"></i>
-														</Link>
-														{userRoleAdmin === "ADMIN" ? (
-															<button
-																className="btn btn-outline-danger btn-sm"
-																title={`Delete ${payment.payee} record!`}
-																onClick={(e) => deletePayment(e, payment.id)}
-															>
-																<i className="fa fa-trash-o"></i>
-															</button>
-														) : (
-															<button
-																className="btn btn-outline-danger btn-sm disableds"
-																title={`Your role is: ${guestRole}. You are not allowed to delete a payment record!`}
-																onClick={(e) =>
-																	unableToDeletePayment(e, payment.id)
-																}
-															>
-																<i className="fa fa-trash-o"></i>
-															</button>
-														)}
-													</td>
-												</tr>
-											))}
-										</tbody>
-									</table>
+																<Link
+																	to={`/payments/view-payment/${payment.id}`}
+																	className="btn btn-outline-success btn-sm"
+																	title={`Update ${payment.payee} record!`}
+																>
+																	<i className="fa fa-pencil"></i>
+																</Link>
+																{userRoleAdmin === "ADMIN" ? (
+																	<button
+																		className="btn btn-outline-danger btn-sm"
+																		title={`Delete ${payment.payee} record!`}
+																		onClick={(e) =>
+																			deletePayment(e, payment.id)
+																		}
+																	>
+																		<i className="fa fa-trash-o"></i>
+																	</button>
+																) : (
+																	<button
+																		className="btn btn-outline-danger btn-sm disableds"
+																		title={`Your role is: ${guestRole}. You are not allowed to delete a payment record!`}
+																		onClick={(e) =>
+																			unableToDeletePayment(e, payment.id)
+																		}
+																	>
+																		<i className="fa fa-trash-o"></i>
+																	</button>
+																)}
+															</td>
+														</tr>
+													))}
+												</tbody>
+											</table>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
+							</>
+						)}
 					</div>
 				</React.Fragment>
 			)}
