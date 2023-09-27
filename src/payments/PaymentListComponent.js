@@ -20,7 +20,7 @@ const PaymentListComponent = () => {
 	const [selectedWeek, setSelectedWeek] = useState("");
 	const currentYear = new Date().getFullYear();
 
-	const userRoleAdmin = "ADMIN";
+	const userRoleAdmin = "ADMIN1";
 	const guestRole = "GUEST";
 
 	//Format paidDate Date
