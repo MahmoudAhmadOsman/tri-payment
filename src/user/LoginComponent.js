@@ -35,7 +35,7 @@ export const LoginComponent = () => {
 											id="password-field"
 											type="password"
 											className="form-control form-control-lg"
-											placeholder="password"
+											placeholder="Password"
 											required=""
 										/>
 									</div>
