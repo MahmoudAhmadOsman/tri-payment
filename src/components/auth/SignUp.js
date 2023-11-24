@@ -52,7 +52,7 @@ const SignUp = () => {
 							<div className="login-wraps p-4 p-md-5">
 								<div className="d-flex">
 									<div>
-										<h4 className="mb-2">Create An Account</h4>
+										<h4 className="mb-2 text-center">Register</h4>
 										<p>Please fill out the required fields below.</p>
 									</div>
 								</div>
