@@ -106,7 +106,7 @@ const SignUp = () => {
 											id="password"
 											type="password"
 											className="form-control form-control-lg"
-											placeholder="password"
+											placeholder="Password"
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 										/>
