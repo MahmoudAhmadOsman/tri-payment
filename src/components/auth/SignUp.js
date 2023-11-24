@@ -87,7 +87,7 @@ const SignUp = () => {
 										<input
 											type="email"
 											id="email"
-											placeholder="Enter your email"
+											placeholder="Email address"
 											className="form-control form-control-lg"
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
