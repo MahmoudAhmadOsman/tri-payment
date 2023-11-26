@@ -50,7 +50,7 @@ const SignIn = () => {
 							<div className="login-wraps p-4 p-md-5">
 								<div className="d-flex">
 									<div className="w-100">
-										<h2 className="mb-4">Sign In </h2>
+										<h2 className="mb-4 text-center">Sign In </h2>
 										<p>Please enter your email and password to sign in.</p>
 									</div>
 								</div>
@@ -82,7 +82,7 @@ const SignIn = () => {
 											id="password"
 											type="password"
 											className="form-control form-control-lg"
-											placeholder="password"
+											placeholder="Password"
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 										/>

@@ -11,7 +11,7 @@ export const LoginComponent = () => {
 							<div className="login-wrap p-4 p-md-5">
 								<div className="d-flex">
 									<div className="w-100">
-										<h2 className="mb-4">Sign In</h2>
+										<h2 className="mb-4 text-center">Sign In</h2>
 									</div>
 								</div>
 								<form action="#" className="signin-form">
@@ -35,7 +35,7 @@ export const LoginComponent = () => {
 											id="password-field"
 											type="password"
 											className="form-control form-control-lg"
-											placeholder="password"
+											placeholder="Password"
 											required=""
 										/>
 									</div>

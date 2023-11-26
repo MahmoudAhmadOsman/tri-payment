@@ -52,7 +52,7 @@ const SignUp = () => {
 							<div className="login-wraps p-4 p-md-5">
 								<div className="d-flex">
 									<div>
-										<h4 className="mb-2">Create An Account</h4>
+										<h2 className="mb-2 text-center">Register</h2>
 										<p>Please fill out the required fields below.</p>
 									</div>
 								</div>
@@ -87,7 +87,7 @@ const SignUp = () => {
 										<input
 											type="email"
 											id="email"
-											placeholder="Enter your email"
+											placeholder="Email address"
 											className="form-control form-control-lg"
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
@@ -106,7 +106,7 @@ const SignUp = () => {
 											id="password"
 											type="password"
 											className="form-control form-control-lg"
-											placeholder="password"
+											placeholder="Password"
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 										/>
