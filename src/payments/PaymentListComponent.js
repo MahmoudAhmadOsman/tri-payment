@@ -127,7 +127,13 @@ const PaymentListComponent = () => {
 
 	const unableToDeletePayment = (e) => {
 		e.preventDefault();
-		setUnableToDelete(true);
+		// setUnableToDelete(true);
+		Swal.fire({
+			icon: "error",
+			title: "Oops!!",
+			text: "Sorry! You don't have permission to delete this record!'",
+			footer: '<a href="/">Why do I have this issue?</a>',
+		});
 		setTimeout(() => {
 			setUnableToDelete(false);
 			window.location.href = "/auth/sign-in";
