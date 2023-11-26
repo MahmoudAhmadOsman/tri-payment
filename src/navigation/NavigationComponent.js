@@ -7,7 +7,11 @@ const NavigationComponent = () => {
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div className="container-fluid">
 					<Link className="navbar-brand text-uppercase" to="/">
-						Tri-Payment
+						<img
+							className="img-fluid"
+							src="assets/images/tri-payment-logo.png"
+							alt="tri-payment logo"
+						/>
 					</Link>
 					<button
 						className="navbar-toggler"
