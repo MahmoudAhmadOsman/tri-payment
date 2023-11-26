@@ -9,7 +9,7 @@ const NavigationComponent = () => {
 					<Link className="navbar-brand text-uppercase" to="/">
 						<img
 							className="img-fluid"
-							src="assets/images/tri-payment-logo.png"
+							src="/assets/images/tri-payment-logo.png"
 							alt="tri-payment logo"
 						/>
 					</Link>
