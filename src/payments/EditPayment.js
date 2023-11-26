@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import PaymentService from "../service/PaymentService";
 import Loading from "../utils/Loading";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const EditPayment = () => {
 	const [loading, setLoading] = useState(true);
@@ -56,30 +57,44 @@ const EditPayment = () => {
 		if (id) {
 			PaymentService.patchPayment(id, paymentData)
 				.then(() => {
-					toast.success(`The ${payer}'s record is updated successfully!`, {
-						position: "top-right",
-						autoClose: 5000,
-						hideProgressBar: false,
-						closeOnClick: true,
-						pauseOnHover: true,
-						draggable: true,
-						progress: undefined,
+					// toast.success(`The ${payer}'s record is updated successfully!`, {
+					// 	position: "top-right",
+					// 	autoClose: 5000,
+					// 	hideProgressBar: false,
+					// 	closeOnClick: true,
+					// 	pauseOnHover: true,
+					// 	draggable: true,
+					// 	progress: undefined,
+					// });
+					Swal.fire({
+						position: "top-center",
+						icon: "success",
+						title: "Success",
+						text: `The ${payer}'s record updated successfully!`,
+						showConfirmButton: false,
+						timer: 2500,
 					});
 					navigate("/payments");
 				})
 				.catch((error) => {
-					toast.error(
-						`An error has occurred  ${error.message} while editting ${payer.id}'s record!`,
-						{
-							position: "top-right",
-							autoClose: 5000,
-							hideProgressBar: false,
-							closeOnClick: true,
-							pauseOnHover: true,
-							draggable: true,
-							progress: undefined,
-						}
-					);
+					// toast.error(
+					// 	`An error has occurred  ${error.message} while editting ${payer.id}'s record!`,
+					// 	{
+					// 		position: "top-right",
+					// 		autoClose: 5000,
+					// 		hideProgressBar: false,
+					// 		closeOnClick: true,
+					// 		pauseOnHover: true,
+					// 		draggable: true,
+					// 		progress: undefined,
+					// 	}
+					// );
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Something went wrong!",
+						footer: '<a href="/">Why do I have this issue?</a>',
+					});
 
 					console.log(error.message);
 				});

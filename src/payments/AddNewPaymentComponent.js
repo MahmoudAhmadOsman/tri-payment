@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PaymentService from "../service/PaymentService";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "./PaymentStyle.css";
+import Swal from "sweetalert2";
 
 const AddNewPaymentComponent = () => {
 	const [error, setError] = useState(false);
@@ -75,22 +76,36 @@ const AddNewPaymentComponent = () => {
 					// });
 
 					// console.log(res.data);
-					toast.success("New payment record added successfully!", {
-						position: "top-right",
-						autoClose: 5000,
-						hideProgressBar: false,
-						closeOnClick: true,
-						pauseOnHover: true,
+					// toast.success("New payment record added successfully!", {
+					// 	position: "top-right",
+					// 	autoClose: 5000,
+					// 	hideProgressBar: false,
+					// 	closeOnClick: true,
+					// 	pauseOnHover: true,
+					// });
+					Swal.fire({
+						position: "top-center",
+						icon: "success",
+						title: "Success",
+						text: "New payment record added successfully!",
+						showConfirmButton: false,
+						timer: 2500,
 					});
 					navigate("/payments");
 				})
 				.catch((error) => {
-					toast.error("Something went wrong!", {
-						position: "top-right",
-						autoClose: 5000,
-						hideProgressBar: false,
-						closeOnClick: true,
-						pauseOnHover: true,
+					// toast.error("Something went wrong!", {
+					// 	position: "top-right",
+					// 	autoClose: 5000,
+					// 	hideProgressBar: false,
+					// 	closeOnClick: true,
+					// 	pauseOnHover: true,
+					// });
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Something went wrong!",
+						footer: '<a href="/">Why do I have this issue?</a>',
 					});
 					console.log(error.message);
 				});

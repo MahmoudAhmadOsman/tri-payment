@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { sort } from "array-sort";
 
 // import data from "../data/data.json";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../utils/Loading";
 import PaymentService from "../service/PaymentService";
 import ViewPaymentModal from "./ViewPaymentModal";
+import Swal from "sweetalert2";
 
 const PaymentListComponent = () => {
 	const navigate = useNavigate();
@@ -107,12 +108,18 @@ const PaymentListComponent = () => {
 			})
 			.catch((error) => {
 				setError(true);
-				toast.error("Something went wrong!", {
-					position: "top-right",
-					autoClose: 5000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
+				// toast.error("Something went wrong!", {
+				// 	position: "top-right",
+				// 	autoClose: 5000,
+				// 	hideProgressBar: false,
+				// 	closeOnClick: true,
+				// 	pauseOnHover: true,
+				// });
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: "Something went wrong!",
+					footer: '<a href="/">Why do I have this issue?</a>',
 				});
 				console.error(error.message);
 			});
@@ -131,32 +138,45 @@ const PaymentListComponent = () => {
 		e.preventDefault();
 		await PaymentService.deletePayment(id)
 			.then((res) => {
-				toast.error(`The record [${id}] was deleted!`, {
-					position: "top-right",
-					autoClose: 5000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
+				// toast.error(`The record [${id}] was deleted!`, {
+				// 	position: "top-right",
+				// 	autoClose: 5000,
+				// 	hideProgressBar: false,
+				// 	closeOnClick: true,
+				// 	pauseOnHover: true,
+				// 	draggable: true,
+				// 	progress: undefined,
+				// });
+				Swal.fire({
+					icon: "error",
+					title: "DELETED",
+					text: `The record [${id}] was deleted!`,
+					footer: '<a href="/">Why do I have this issue?</a>',
 				});
 				getPayments();
 				navigate("/payments");
 			})
 			.catch((error) => {
 				// setError(true);
-				toast.error(
-					`An error has occurred  ${error.message} while trying to delete payment with an id of: ${id}`,
-					{
-						position: "top-right",
-						autoClose: 5000,
-						hideProgressBar: false,
-						closeOnClick: true,
-						pauseOnHover: true,
-						draggable: true,
-						progress: undefined,
-					}
-				);
+				// toast.error(
+				// 	`An error has occurred  ${error.message} while trying to delete payment with an id of: ${id}`,
+				// 	{
+				// 		position: "top-right",
+				// 		autoClose: 5000,
+				// 		hideProgressBar: false,
+				// 		closeOnClick: true,
+				// 		pauseOnHover: true,
+				// 		draggable: true,
+				// 		progress: undefined,
+				// 	}
+				// );
+
+				Swal.fire({
+					icon: "error",
+					title: "Oops!!",
+					text: `An error has occurred  ${error.message} while trying to delete payment with an id of: ${id}`,
+					footer: '<a href="/">Why do I have this issue?</a>',
+				});
 
 				console.error(error.message);
 			});
