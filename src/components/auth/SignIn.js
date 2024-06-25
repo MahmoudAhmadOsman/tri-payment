@@ -96,6 +96,7 @@ const SignIn = () => {
 										<button
 											type="submit"
 											className="btn btn-outline-primary fw-bold btn-lg w-100"
+											disabled={!email || !password}
 										>
 											Login
 										</button>
