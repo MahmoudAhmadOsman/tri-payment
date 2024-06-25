@@ -103,6 +103,7 @@ const SignIn = () => {
 											type="submit"
 											className="btn btn-outline-success fw-bold btn-lg w-100 mt-2"
 											onClick={signInWithGoogle}
+											disabled={!email || !password}
 										>
 											Login with Google
 										</button>
