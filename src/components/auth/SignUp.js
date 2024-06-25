@@ -123,6 +123,7 @@ const SignUp = () => {
 										<button
 											type="submit"
 											className="btn btn-outline-primary fw-bold btn-lg"
+												disabled={!fullName || !email || !password}
 										>
 											Sign Up
 										</button>
