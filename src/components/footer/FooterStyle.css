@@ -1,18 +1,6 @@
 .footer {
-	height: auto;
-	margin-top: 25%;
-	background-color: #1f2022;
-	color: #888;
-}
-.footer .copyright {
-	background-color: #333;
-	color: #888;
-	font-size: 10px;
-}
-.footer .copyright a {
-	color: #f39200;
-	font-size: 9px;
-}
-.footer h6{
-	color:#888 !important;
+  height: auto;
+  margin-top: 25%;
+  background-color: #1f2022;
+  color: #ffffff !important;
 }

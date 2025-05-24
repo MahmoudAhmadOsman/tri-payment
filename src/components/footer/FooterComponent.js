@@ -1,145 +1,141 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./FooterStyle.css";
-
 const FooterComponent = () => {
-	return (
-		<section className="footer text-muted text-lg-start">
-			{/* Section: Social media */}
-			<div className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-				{/* Left */}
-				<div className="me-5 d-none d-lg-block">
-					<span>LET'S STAY CONNECTED</span>
-				</div>
-				{/* Left */}
-				{/* Right */}
-				<div>
-					<Link to="#" className="me-4 text-reset">
-						<i className="fa fa-facebook-f" />
-					</Link>
-					<Link to="#" className="me-4 text-reset">
-						<i className="fa fa-twitter" />
-					</Link>
+  return (
+    <footer className="bg-black text-white pt-5 pb-4">
+      {/* Top Section - Social Media */}
+      <div className="container">
+        <div className="row align-items-center mb-4">
+          <div className="col-md-6 mb-3 mb-md-0">
+            <h5 className="mb-0 text-white">LET'S STAY CONNECTED</h5>
+          </div>
+          <div className="col-md-6 text-md-end">
+            <div className="social-icons">
+              <Link to="#" className="text-white me-3">
+                <i className="fa fa-facebook-f fa-lg" />
+              </Link>
+              <Link to="#" className="text-white me-3">
+                <i className="fa fa-twitter fa-lg" />
+              </Link>
+              <Link
+                to="https://www.linkedin.com/in/mahmoudaosman/"
+                className="text-white me-3"
+              >
+                <i className="fa fa-linkedin fa-lg" />
+              </Link>
+              <Link to="/#" className="text-white">
+                <i className="fa fa-github fa-lg" />
+              </Link>
+            </div>
+          </div>
+        </div>
 
-					<Link
-						to="https://www.linkedin.com/in/mahmoudaosman/"
-						className="me-4 text-reset"
-					>
-						<i className="fa fa-linkedin" />
-					</Link>
-					<Link to="/#" className="me-4 text-reset">
-						<i className="fa fa-github" />
-					</Link>
-				</div>
-				{/* Right */}
-			</div>
-			{/* Section: Social media */}
-			{/* Section: Links  */}
-			<div>
-				<div className="container text-center text-md-start mt-5">
-					{/* Grid row */}
-					<div className="row mt-3">
-						{/* Grid column */}
-						<div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-							{/* Content */}
-							<h6 className="text-uppercase fw-bold mb-4">
-								<i className="fa fa-gem me-3" />
-								TRI-PAYMENT SYSTEMS, INC.
-							</h6>
-							<p>
-								Mahmoud Osman, a seasoned software engineer with extensive
-								experience in the field, has spearheaded the development of this
-								project.
-							</p>
-						</div>
-						{/* Grid column */}
-						{/* Grid column */}
-						<div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-							{/* Links */}
-							<h6 className="text-uppercase fw-bold mb-4">Products</h6>
-							<p>
-								<Link to="#" className="text-reset">
-									Spring Boot
-								</Link>
-							</p>
-							<p>
-								<Link to="#" className="text-reset">
-									React
-								</Link>
-							</p>
-							<p>
-								<Link to="#" className="text-reset">
-									JPA
-								</Link>
-							</p>
-							<p>
-								<Link to="#" className="text-reset">
-									SQL
-								</Link>
-							</p>
-						</div>
-						{/* Grid column */}
-						{/* Grid column */}
-						<div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-							{/* Links */}
-							<h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
-							<p>
-								<Link to="#" className="text-reset">
-									Pricing
-								</Link>
-							</p>
-							<p>
-								<Link to="#" className="text-reset">
-									Settings
-								</Link>
-							</p>
+        {/* Main Content */}
+        <div className="row">
+          {/* Company Info */}
+          <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 className="text-uppercase fw-bold mb-4 text-white">
+              <i className="fa fa-gem me-2 text-white" />
+              TRI-PAYMENT SYSTEMS, INC.
+            </h5>
+            <p className="text-white-50">
+              Mahmoud Osman, a seasoned software engineer with extensive
+              experience in the field, has spearheaded the development of this
+              project.
+            </p>
+          </div>
 
-							<p>
-								<Link to="#" className="text-reset">
-									Help
-								</Link>
-							</p>
-						</div>
-						{/* Grid column */}
-						{/* Grid column */}
-						<div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-							{/* Links */}
-							<h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-							<p>
-								<i className="fa fa-home me-3" /> Minnesota, MN 10012, US
-							</p>
-							<p>
-								<i className="fa fa-envelope me-3" />
-								tri-payment@suport.com
-							</p>
-							<p>
-								<i className="fa fa-phone me-3" /> + 01 234 567 88
-							</p>
-							<p>
-								<i className="fa fa-print me-3" /> + 01 234 567 89
-							</p>
-						</div>
-						{/* Grid column */}
-					</div>
-					{/* Grid row */}
-				</div>
-			</div>
-			{/* Section: Links  */}
-			{/* Copyright */}
-			<div className="copyright text-center p-4">
-				&copy; Copyright. {new Date().getFullYear()}. TRI-PAYMENT SYSTEMS, INC.
-				All rights reserved. &nbsp; Designed & developed by{" "}
-				<Link
-					to="http://www.mahmoudosman.com"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Mahmoud Osman
-				</Link>
-			</div>
-			{/* Copyright */}
-		</section>
-	);
+          {/* Products */}
+          <div className="col-lg-2 col-md-3 mb-4 mb-md-0">
+            <h5 className="text-uppercase fw-bold mb-4 text-white">Products</h5>
+            <ul className="list-unstyled">
+              <li className="mb-2">
+                <Link to="#" className="text-white-50">
+                  Spring Boot
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="#" className="text-white-50">
+                  React
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="#" className="text-white-50">
+                  JPA
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="text-white-50">
+                  SQL
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Useful Links */}
+          <div className="col-lg-2 col-md-3 mb-4 mb-md-0">
+            <h5 className="text-uppercase fw-bold mb-4 text-white">
+              Useful Links
+            </h5>
+            <ul className="list-unstyled">
+              <li className="mb-2">
+                <Link to="#" className="text-white-50">
+                  Pricing
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="#" className="text-white-50">
+                  Settings
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="text-white-50">
+                  Help
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="col-lg-4 col-md-6">
+            <h5 className="text-uppercase fw-bold mb-4 text-white">Contact</h5>
+            <ul className="list-unstyled text-white-50">
+              <li className="mb-2">
+                <i className="fa fa-home me-2 text-white" /> Minnesota, MN
+                10012, US
+              </li>
+              <li className="mb-2">
+                <i className="fa fa-envelope me-2 text-white" />{" "}
+                tri-payment@suport.com
+              </li>
+              <li className="mb-2">
+                <i className="fa fa-phone me-2 text-white" /> + 01 234 567 88
+              </li>
+              <li>
+                <i className="fa fa-print me-2 text-white" /> + 01 234 567 89
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="text-center p-3 bg-black mt-4 border-top border-secondary">
+        <small className="text-white-50">
+          &copy; {new Date().getFullYear()} TRI-PAYMENT SYSTEMS, INC. All rights
+          reserved. Created by{" "}
+          <Link
+            to="http://www.mahmoudosman.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white"
+          >
+            Mahmoud Osman
+          </Link>
+        </small>
+      </div>
+    </footer>
+  );
 };
 
 export default FooterComponent;
