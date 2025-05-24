@@ -1,18 +1,36 @@
-.payment-links {
-	position: relative;
-}
-.payment-links .add-payment,
-.payment-links .payment-list {
-	width: auto;
-	border: 2px solid #444;
-	padding: 25px;
-	margin-bottom: 20px;
+/* PaymentStyle.css */
+.hover-effect {
+  transition: all 0.3s ease;
+  border-top: 4px solid transparent;
 }
 
-/* Add New Payment Style */
-.add_new_payment {
-	position: relative;
+.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
 }
-.add_new_payment input::placeholder {
-	font-size: 15px;
+
+.card.add-new:hover {
+  border-top-color: var(--bs-success);
+}
+
+.card.view-list:hover {
+  border-top-color: var(--bs-primary);
+}
+
+.icon-wrapper {
+  transition: all 0.3s ease;
+}
+
+.hover-effect:hover .icon-wrapper {
+  transform: scale(1.1);
+}
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
 }
