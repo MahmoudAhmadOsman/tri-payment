@@ -28,6 +28,7 @@ const PaymentLinks = () => {
                   <i
                     className="fa fa-plus-circle fa-3x text-success"
                     aria-hidden="true"
+                    style={{ fontSize: "35px" }}
                   ></i>
                 </div>
                 <h3 className="h4 mb-3">Add New Payment</h3>
@@ -52,6 +53,7 @@ const PaymentLinks = () => {
                   <i
                     className="fa fa-list-alt fa-3x text-primary"
                     aria-hidden="true"
+                    style={{ fontSize: "35px" }}
                   ></i>
                 </div>
                 <h3 className="h4 mb-3">Payment List</h3>
